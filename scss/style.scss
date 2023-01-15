@@ -14,6 +14,7 @@
 .main-section {
     padding: 0px 0px 50px 0px;
     background: #F3F2F8;
+    overflow: hidden;
 }
 
 .head {
@@ -103,13 +104,13 @@
     color: #1D1D39;
     font-weight: 400;
 
-    .nav__a {
+    .nav__a, .footer-nav__a {
         position: relative;
         display: block;
         transition: all .3s ease;
     }
 
-    .nav__a::after {
+    .nav__a::after, .footer-nav__a::after {
         content: "";
         display: block;
         position: absolute;
@@ -121,16 +122,16 @@
         transition: all .3s ease;
     }
 
-    .nav__a:hover {
+    .nav__a:hover, .footer-nav__a:hover {
         color: #6C63FE;
     }
 
-    .nav__a:hover::after {
+    .nav__a:hover::after, .footer-nav__a:hover::after {
         width: 100%;
     }
 }
 
-.button-account {
+.button-account, .footer-button {
     display: block;
     width: 140px;
     padding: 15px 0px;
@@ -143,7 +144,7 @@
     transition: all .3s ease;
 }
 
-.button-account:hover {
+.button-account:hover, .footer-button:hover {
     background: #1D1D39;
     color: white;
 }
@@ -170,23 +171,15 @@
 
     @media screen and (max-width:1100px) {
         .banner-wrapper {
-            flex-direction: column-reverse !important;
             gap: 30px;
-            text-align: center;
-
-            .banner__text {
-                margin: 0 auto;
-            }
 
             .button {
-                margin: 0 auto;
                 margin-bottom: 50px;
             }
         }
 
         .banner-wrapper__social {
-            flex-direction: column;
-            gap: 20px;
+            gap: 30px;
         }
 
         .banner-club,
@@ -205,14 +198,6 @@
 
         .banner-img__item {
             width: 100%;
-        }
-
-        .banner__title {
-            font-size: 32px !important;
-        }
-
-        .banner__text {
-            font-size: 14px !important;
         }
     }
 
@@ -346,6 +331,12 @@
         color: #1D1D39;
     }
 
+    @media (max-width: 767px) {
+        h2 {
+            font-size: 36px;
+        }
+    }
+
     .line,
     .line1 {
         height: 10px;
@@ -359,12 +350,22 @@
     }
 }
 
+@media screen and (max-width:530px) {
+    .banner .banner__text {
+        font-size: 16px !important;
+    }
+    .we__info p {
+        font-size: 16px !important;
+    }
+}
+
 .advantages {
     background: white;
     color: #1D1D39;
 
     @media screen and (max-width:530px) {
         .advantages__item {
+            align-items: center;
             .name {
                 flex-direction: column !important;
 
@@ -375,7 +376,13 @@
             }
 
             .about {
-                font-size: 14px !important;
+                font-size: 16px !important;
+                text-align: center;
+            }
+
+            a {
+                display: flex;
+                justify-content: center;
             }
         }
     }
@@ -407,12 +414,16 @@
         }
 
         padding: 30px;
-        width: 620px;
+        flex: 0 1 48.8%;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
         border-radius: 12px;
         display: flex;
         flex-direction: column;
         gap: 25px;
+
+        @media (max-width: 1200px) {
+            flex: 0 1 100%;
+        }
 
         a {
             width: 150px;
@@ -439,7 +450,7 @@
     color: #1D1D39;
     background: #F3F2F8;
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 997px) {
         .we-wrapper {
             flex-direction: column-reverse !important;
             text-align: center;
@@ -451,6 +462,12 @@
             .button {
                 margin: 0 auto;
             }
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .we__title {
+            font-size: 32px !important;
         }
     }
 
@@ -514,12 +531,14 @@
             flex-direction: column-reverse !important;
         }
     }
-
+    @media screen and (max-width:1200px) {
+        flex: 0  1 100%;
+    }
+    flex: 0  1 48.8%;
     display: flex;
     flex-direction: column;
     gap: 40px;
     padding: 30px;
-    width: 620px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
 
@@ -661,7 +680,7 @@ footer {
     padding: 50px 0px;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:480px) {
     .title-main {
         text-align: center;
 
@@ -670,12 +689,19 @@ footer {
         }
     }
 
+    .banner__title {
+        font-size: 32px !important;
+    }
+}
+
+@media screen and (max-width:530px) {
+
     .swiper-slide {
         flex-direction: column-reverse !important;
         padding: 40px !important;
 
         .text {
-            font-size: 14px !important;
+            font-size: 16px !important;
         }
     }
 }
@@ -705,7 +731,7 @@ footer {
         }
 
         &.active {
-            right: -10px;
+            right: 0px;
         }
     }
 
@@ -724,7 +750,7 @@ footer {
     .modal-burger__wrapper {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
         margin-top: 50px;
         font-size: 20px;
         font-weight: 500;
@@ -741,10 +767,11 @@ footer {
             font-weight: 500;
             color: #1D1D39;
             transition: all .3s ease;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin-top: 20px;
+            // position: absolute;
+            // top: 50%;
+            // left: 40px;
+            // transform: translate(-50%, -50%);
         }
     }
 }
@@ -1177,3 +1204,145 @@ footer {
 @import "one-lesson.scss";
 @import "gift.scss";
 @import "panel.scss";
+
+// Debug layout errors
+
+@mixin transition {
+    transition: .3s ease-in-out;
+}
+
+.banner {
+
+    padding-top: 57px;
+
+    &__img {
+
+        position: relative;
+
+    }
+
+    &-cicrle {
+
+        position: absolute;
+        right: 0;
+        top: -57px;
+
+    }
+
+    &-club a {
+
+        background: #FFFFFF;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05), inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        @include transition();
+
+        &:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05), 0px 0px 4px rgba(0, 0, 0, 0.25);
+        }
+
+    }
+
+    &-social a {
+
+        & svg linearGradient stop {
+            @include transition();
+        }
+
+        &:hover svg linearGradient stop {
+            stop-color: #1D1D39;
+        }
+
+    }
+
+    &__info {
+        flex: 0 1 50%;
+    }
+
+}
+
+.content.active {
+    border-radius: 0px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .banner__title {
+        font-size: 54px !important;
+    }
+}
+
+@media (max-width: 997px) {
+    .banner-wrapper {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+    }
+
+    .banner__info {
+        align-items: center;
+        text-align: center;
+    }
+
+    .banner-wrapper__social {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .banner__title {
+        font-size: 36px !important;
+    }
+
+    .we .we-wrapper .we__title {
+        font-size: 24px !important;
+    }
+}
+
+.prev svg circle, .next svg circle {
+    @include transition();
+}
+
+.prev svg:hover circle, .next svg:hover circle {
+    fill: #1D1D39;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bottom-social {
+    @include flex-center();
+}
+
+@media (max-width: 997px) {
+    .footer {
+        .head {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .nav {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .footer-bottom {
+            justify-content: center;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+    }
+}
