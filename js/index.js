@@ -79,10 +79,28 @@ const navAccount = () => {
     })
 }
 
+const accordion = (accordion, parentItems, parentButton, parrentContent) => {
+
+    const parent = document.querySelector(accordion);
+    if(!parent) return false;
+
+    const items = parent.querySelectorAll(parentItems);
+
+    items.forEach((item) => {
+        const open = item.querySelector(parentButton);
+        const content = item.querySelector(parrentContent);
+        open.addEventListener('click', () => {
+            content.classList.toggle('active');
+            open.classList.toggle('active');
+        })
+    })
+}
+
 const init = () => {
     burger();
     programCourse();
     navAccount();
+    accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content');
 }
 
 document.addEventListener('DOMContentLoaded', init)

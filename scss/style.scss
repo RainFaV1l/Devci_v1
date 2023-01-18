@@ -141,7 +141,7 @@
     font-size: 16px;
     font-weight: 500;
     color: #1D1D39;
-    transition: all .3s ease;
+    transition: all .3s ease-in-out;
 }
 
 .button-account:hover, .footer-button:hover {
@@ -1344,5 +1344,302 @@ img {
             flex-wrap: wrap;
             gap: 30px;
         }
+    }
+}
+
+// Оценка группы курса
+
+@mixin gap-column($gap) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin gap-row($gap) {
+    display: flex;
+    gap: $gap;
+}
+
+.close-course-button {
+    @include transition();
+    &:hover {
+        background: linear-gradient(135deg, #1D1D39 100%, #1D1D39 100%) !important;
+    }
+}
+
+.courses p {
+    font-weight: 500;
+}
+
+.teacher-panel__group {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.group-user-table {
+    @include gap-column(40px);
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05), inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 40px 30px;
+}
+
+.group-user-table__name {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.group-user-table__table {
+    @include gap-column(30px);
+}
+
+.group-user-table-tr-list {
+    display: flex;
+    gap: 30px;
+}
+
+.group-user-header .group-user-table-tr-list-item {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.group-user-table-tr-list-item {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.group-user-table-tr-list-item:first-child {
+    flex: 0 1 2%;
+}
+
+.group-user-table-tr-list-item:last-child {
+    flex: 0 1 2%;
+}
+
+.group-user-table-tr-list-item {
+    flex: 0 1 48%;
+}
+
+.group-user-table-item {
+    @include gap-column(50px);
+}
+
+.group-user-table-item-accordion {
+    @include gap-column(30px);
+}
+
+.group-user-table-item-accordion__item {
+    @include gap-column(15px); 
+}
+
+.group-user-table-item-accordion__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.group-user-table-item-accordion__desk {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.group-user-table-item-accordion__desk a {
+    color: #6C63FF;
+    text-decoration: underline;
+}
+
+.group-user-table-item-accordion__item  {
+    .group-user-table-item-form {
+        @include gap-column(30px);
+        align-items: flex-start;
+    }
+
+    .group-user-table-item-form textarea {
+        resize: vertical;
+        width: 100%;
+        padding: 20px 30px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 130%;
+        outline: 0;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05), inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        border: 1px solid transparent;
+        @include transition();
+    }
+
+    .group-user-table-item-form textarea::placeholder {
+        color: rgba(29, 29, 57, 0.5);
+    }
+    
+    .group-user-table-item-form textarea:focus {
+        border-color:#6C63FE;
+    }
+
+    .group-user-table-item-form__buttons {
+        width: 100%;
+        @include gap-row(30px);
+        justify-content: flex-end !important;
+        align-items: center;
+    }
+
+    .accept-button, .reject-button {
+        padding: 18px 48px;
+        @include flex-center();
+        font-size: 16px;
+        font-weight: 500;
+        color: #1D1D39;
+        border: 1px solid #1D1D39;
+        border-radius: 30px;
+        background-color: #fff;
+        @include transition();
+        cursor: pointer;
+    }
+
+    .reject-button:hover {
+        background-color: #1D1D39;
+        color: #fff;
+    }
+
+    .accept-button {
+        background: #6C63FF;
+        color: #fff;
+        border-color: transparent;
+
+        &:hover {
+            background-color: #FF22B0;
+        }
+    }
+}
+
+.accordion__content {
+    visibility: hidden;
+    overflow:hidden;
+    @include transition();
+    opacity: 0;
+    height: 0;
+}
+
+.accordion__content.active {
+    visibility: visible;
+    height:auto;
+    overflow:none;
+    opacity:1;
+    height:auto;
+    padding-bottom: 50px;
+}
+
+.accordion__button {
+    @include transition();
+    cursor: pointer;
+    display: flex;
+    align-items: center !important;
+    height: 20px;
+}
+
+.accordion__button.active {
+    transform: rotate(180deg);
+}
+
+.group-user-table-tr-list-item {
+    min-width: 20px;
+}
+
+@media (max-width: 1200px) {
+
+    .panel__title {
+        font-size: 54px !important;
+    }
+
+}
+
+@media (max-width: 997px) {
+
+    .panel {
+        padding: 50px 20px;
+    }
+
+    .content {
+        padding: 50px 30px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .panel {
+        padding: 50px 0px;
+    }
+
+    .content {
+        padding: 50px 20px;
+    }
+
+}
+
+@media (max-width: 570px) {
+
+    .group-user-table-item-accordion__item .group-user-table-item-form__buttons {
+        justify-content: flex-start !important;
+        font-size: 14px;
+    }
+
+    .group-user-table-item-form__buttons input, .group-user-table-item-form__buttons a {
+        padding: 15px 30px !important;
+    }
+
+}
+
+@media (max-width: 530px) {
+
+    .group-user-table {
+        overflow-x: scroll;
+    }
+
+    .group-user-table__table {
+        width: 358px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .group-user-table__table {
+        width: 100%;
+    }
+
+    .teaher__container {
+        padding: 0 !important;
+    }
+
+    .content {
+        padding: 50px 15px;
+    }
+
+    .group-user-table-item-form__buttons {
+        flex-wrap: wrap;
+    }
+
+    .panel__title {
+        font-size: 36px !important;
+    }
+
+    .group-user-table {
+        padding: 40px 0px;
+        box-shadow: none;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .group-user-table__table {
+        width: 367px;
     }
 }
