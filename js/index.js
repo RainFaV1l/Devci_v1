@@ -96,11 +96,42 @@ const accordion = (accordion, parentItems, parentButton, parrentContent) => {
     })
 }
 
+const numberAnimation = (elems) => {
+
+    let elements = elems;
+
+    // Параметры анимации
+    const time = 1000;
+    const step = 1;
+
+    function outNum(elements) {
+        let e = document.querySelectorAll(elements);
+        e.forEach((item) => {
+            // Числа
+            let number = +item.textContent;
+            let n = 0;
+            let t = Math.round(time/(number/step));
+            let interval = setInterval(() => {
+                    n = n + step;
+                    if (n === number) {
+                        clearInterval(interval);
+                    }
+                    item.innerHTML = n;
+                }, t);
+        })
+    }
+
+    // Вызываем функцию
+    outNum(elements);
+
+}
+
 const init = () => {
     burger();
     programCourse();
     navAccount();
     accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content');
+    numberAnimation('.admin-panel-content-info-item__title');
 }
 
 document.addEventListener('DOMContentLoaded', init)
