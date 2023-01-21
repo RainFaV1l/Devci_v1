@@ -1210,11 +1210,10 @@ footer {
 @import "gift.scss";
 @import "panel.scss";
 
-// Debug layout errors
+// Подключаем стиль с миксинами
+@import "mixins.scss";
 
-@mixin transition {
-    transition: .3s ease-in-out;
-}
+// Debug layout errors
 
 .banner {
 
@@ -1316,12 +1315,6 @@ img {
     fill: #1D1D39;
 }
 
-@mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .footer-bottom {
     display: flex;
     align-items: center;
@@ -1354,17 +1347,6 @@ img {
 }
 
 // Оценка группы курса
-
-@mixin gap-column($gap) {
-    display: flex;
-    flex-direction: column;
-    gap: $gap;
-}
-
-@mixin gap-row($gap) {
-    display: flex;
-    gap: $gap;
-}
 
 .close-course-button {
     @include transition();
@@ -1896,6 +1878,12 @@ html, body {
     flex: 0 1 48.8%;
 }
 
+@media (max-width: 1800px)  {
+    .admin-panel-vertical-line {
+        left: 271px;
+    }
+}
+
 @media (max-width: 1700px) {
 
     .admin-panel-content__info-list {
@@ -2033,4 +2021,58 @@ html, body {
     .admin-panel-content-aside-header__title {
         word-break: break-all;
     }
-} 
+}
+
+.admin-panel-info-users {
+    flex-basis: 100%;
+}
+
+.admin-panel-info-new-users__form {
+
+    @include flex-center();
+
+    position: relative;
+
+    input {
+        width: 420px;
+        outline: 0;
+        border: 1px solid transparent;
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+        padding: 17px 30px;
+        padding-left: 61px;
+        font-weight: 500
+    }
+
+    button {
+        @include flex-center();
+        cursor: pointer;
+    }
+
+    input::placeholder {
+        color: rgba(29, 29, 57, 0.6);
+        @include transition();
+    }
+
+    input:focus::placeholder {
+        color: transparent;
+    }
+
+    svg {
+        position: absolute;
+        left: 30px;
+    }
+
+    input[type='search']::-webkit-search-decoration, 
+    input[type='search']::-webkit-search-cancel-button, 
+    input[type='search']::-webkit-search-results-button, 
+    input[type='search']::-webkit-search-results-decoration {
+        display: none;
+    }
+}
+
+.admin-panel-info-new-users__buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}

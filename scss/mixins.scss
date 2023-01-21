@@ -1,0 +1,45 @@
+// Mixin transition задает плавность анимациям
+@mixin transition {
+    transition: .3s ease-in-out;
+}
+
+// Mixin flex-center центрирует элемент
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Mixin gap-column добавляет свойство gap для колонки
+@mixin gap-column($gap) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+// Mixin gap-column добавляет свойство gap для столбца
+@mixin gap-row($gap) {
+    display: flex;
+    gap: $gap;
+}
+
+// Mixin button является универсальным видом кнопки с разными стилями
+@mixin button($padding-t-b, $padding-l-r, $type) {
+    
+    @include transition();
+
+    @if $type == 'gradient' {
+        background: linear-gradient(135deg, #F8A4D8 0%, #6C63FF 100%);
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+    @else if $type == 'border' {
+        background: transparent;
+        border: 1px solid #1D1D39;
+    }
+    
+    border-radius: 30px;
+    padding: $padding-t-b $padding-l-r;
+}
