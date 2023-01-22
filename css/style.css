@@ -4234,3 +4234,92 @@ html, body {
           align-items: center;
   gap: 30px;
 }
+
+.admin-panel-info-new-users__button {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: transparent;
+  border: 1px solid #1D1D39;
+  border-radius: 30px;
+  padding: 15px 48px;
+}
+.admin-panel-info-new-users__button:hover {
+  background-color: #1D1D39;
+  color: #fff;
+}
+.admin-panel-info-new-users__button.active {
+  background: linear-gradient(135deg, #F8A4D8 0%, #6C63FF 100%);
+  color: #fff;
+  border-color: #fff;
+}
+
+.account-wrapper .menu a {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.account-wrapper .menu a:hover {
+  background-color: #F3F2F8 !important;
+}
+
+.admin-panel-info-new-groups .new-users-table__name:first-child,
+.admin-panel-info-users .new-users-table__name:first-child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+}
+
+.admin-panel-info-new-groups .new-users-table__name,
+.admin-panel-info-users .new-users-table__name {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
+}
+
+@media (max-width: 1800px) {
+  .admin-panel-info-new-users__header {
+    gap: 30px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .admin-panel-info-new-users__buttons {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+@media (max-width: 767px) {
+  .admin-panel-info-new-users__form {
+    width: 100%;
+  }
+  .admin-panel-info-new-users__form input {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .admin-panel-info-new-users__buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .admin-panel-info-new-users__button {
+    width: 100%;
+  }
+  .admin-panel-content-aside-header__container {
+    padding-right: 0px;
+  }
+  .admin-panel-info-users .new-users-table__name:last-child {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 70%;
+            flex: 0 1 70%;
+  }
+}

@@ -27,8 +27,10 @@
 @mixin button($padding-t-b, $padding-l-r, $type) {
     
     @include transition();
+    @include flex-center();
 
     @if $type == 'gradient' {
+
         background: linear-gradient(135deg, #F8A4D8 0%, #6C63FF 100%);
 
         &:hover {
@@ -36,10 +38,45 @@
         }
     }
     @else if $type == 'border' {
+
         background: transparent;
         border: 1px solid #1D1D39;
+
+        &:hover {
+            background-color: #1D1D39;
+            color: #fff;
+        }
+
     }
     
     border-radius: 30px;
     padding: $padding-t-b $padding-l-r;
+}
+
+// Mixin flex является кастомным flex элементом
+
+@mixin flex($d, $j, $a, $g, $w) {
+
+    display: flex;
+
+    @if $d == 'c' {flex-direction: column;}
+    @else if $type == 'r' {flex-direction: row;}
+    @else if $type == 'c-r' {flex-direction: column-reverse;}
+    @else if $type == 'r-r' {flex-direction: row-reverse;}
+
+    @if $j == 'c' {justify-content: center;}
+    @else if $j == 's-b' {justify-content: space-between;}
+    @else if $j == 's' {justify-content: flex-start;}
+    @else if $j == 'e' {justify-content: flex-end;}
+
+    @if $a == 'c' {align-items: center;}
+    @else if $j == 's' {align-items: flex-start;}
+    @else if $j == 'e' {align-items: flex-end;}
+
+    gap: $g;
+
+    @if $w == 'w' {flex-wrap: wrap;}
+    @else if $w == 'n' {flex-wrap:nowrap;}
+    @else if $w == 'w-r' {flex-wrap:wrap-reverse;}
+
 }

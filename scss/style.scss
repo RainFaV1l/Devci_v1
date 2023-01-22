@@ -2076,3 +2076,71 @@ html, body {
     align-items: center;
     gap: 30px;
 }
+
+.admin-panel-info-new-users__button {
+    @include button(15px, 48px, border);
+
+    &.active {
+        background: linear-gradient(135deg, #F8A4D8 0%, #6C63FF 100%);
+        color: #fff;
+        border-color: #fff;
+    }
+}
+
+
+// Стили для hover эффекта меню
+.account-wrapper .menu a {
+    @include transition();
+
+    &:hover {
+        background-color: #F3F2F8 !important;
+    }
+}
+
+.admin-panel-info-new-groups .new-users-table__name:first-child,
+.admin-panel-info-users .new-users-table__name:first-child {
+    flex: 0 1 10%;
+}
+
+.admin-panel-info-new-groups .new-users-table__name,
+.admin-panel-info-users .new-users-table__name {
+    flex: 0 1 30%;
+}
+
+@media (max-width: 1800px) {
+    .admin-panel-info-new-users__header {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    .admin-panel-info-new-users__buttons {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 767px) {
+    .admin-panel-info-new-users__form {
+        width: 100%;
+    }
+    .admin-panel-info-new-users__form input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-panel-info-new-users__buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .admin-panel-info-new-users__button {
+        width: 100%;
+    }
+    .admin-panel-content-aside-header__container {
+        padding-right: 0px;
+    }
+    .admin-panel-info-users .new-users-table__name:last-child {
+        flex: 0 1 70%;
+    }
+}
+
+// Стили админ панель группы администратора
+
