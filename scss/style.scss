@@ -2,6 +2,7 @@
 
 body {
     color: #1D1D39;
+    box-sizing: border-box;
 }
 
 .container {
@@ -1852,13 +1853,9 @@ html, body {
     border-top: 1px solid rgba(29, 29, 57, 0.15);
 }
 
-.new-users-table__name:first-child {
-    flex: 0 1 10%;
-}
-
 .new-users-table__name {
     min-width: 0px;
-    flex: 0 1 22%;
+    flex: 0 1 23%;
     text-align: left;
     display: flex;
     justify-content: flex-start;
@@ -1984,14 +1981,6 @@ html, body {
         padding-right: 0;
     }
 
-    .admin-panel-info__new-users, .admin-panel-info-new-groups{
-        overflow: auto;
-    }
-
-    .new-users-table {
-        width: 438px;
-    }
-
     .admin-panel-info-new-users__container {
         border: none;
     }
@@ -2097,16 +2086,6 @@ html, body {
     }
 }
 
-.admin-panel-info-new-groups .new-users-table__name:first-child,
-.admin-panel-info-users .new-users-table__name:first-child {
-    flex: 0 1 10%;
-}
-
-.admin-panel-info-new-groups .new-users-table__name,
-.admin-panel-info-users .new-users-table__name {
-    flex: 0 1 30%;
-}
-
 @media (max-width: 1800px) {
     .admin-panel-info-new-users__header {
         gap: 30px;
@@ -2137,10 +2116,119 @@ html, body {
     .admin-panel-content-aside-header__container {
         padding-right: 0px;
     }
-    .admin-panel-info-users .new-users-table__name:last-child {
-        flex: 0 1 70%;
+}
+
+// Стили группы админ панели
+
+.admin-panel-info-groups__button {
+    @include button(15px, 48px, func);
+}
+
+.nav__a {
+    font-weight: 500;
+}
+
+.admin-control__buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-panel-info-users .new-users-table__id, .admin-panel-info-users .admin-control__buttons {
+    flex: 0 1 15%;
+}
+
+.admin-control__hide svg path {
+    opacity: 0;
+    stroke: transparent;
+    z-index: -1;
+}
+
+.applications-table .new-users-table__name:last-child {
+    justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+
+    .users-table {
+        width: 100%;
+    }
+
+    .users-table {
+        overflow-x: scroll !important;
+    }
+
+    .users-table .new-users-table__item {
+        border: 0px;
+    }
+
+    .users-table .new-users-table__name:first-child {
+        flex: 1 0 10%;
+    }
+
+    .users-table .new-users-table__name:last-child {
+        flex: 1 0 10%;
+    }
+
+    .users-table .new-users-table__name {
+        flex: 1 0 25%;
+    }
+
+    .users-table .new-users-table__email {
+        flex: 1 0 40%;
+    }
+
+    .users-table .groups-table .new-users-table__name:last-child {
+        flex: 1 0 55%;
+    }
+
+    .users-table .groups-table .new-users-table__name:first-child {
+        flex: 1 0 10%;
+    }
+
+    .users-table .new-users-table-group .new-users-table__name:last-child {
+        flex: 1 0 50%;
+    }
+
+    .users-table .new-users-table-group .new-users-table__name {
+        flex: 1 0 25%;
+    }
+
+    .users-table .new-users-table-group .new-users-table__name:first-child {
+        flex: 1 0 10%;
+    }
+
+    .users-table .new-users-table-users .new-users-table__name:last-child {
+        flex: 1 0 40%;
+    }
+
+    .users-table .new-users-table-users .new-users-table__name {
+        flex: 1 0 20%;
+    }
+
+    .users-table .new-users-table-users .new-users-table__name:first-child {
+        flex: 1 0 10%;
+    }
+
+    .users-table .applications-table .new-users-table__name:last-child {
+        flex: 1 0 50%;
+    }
+
+    .users-table .applications-table .new-users-table__name {
+        flex: 1 0 25%;
+    }
+
+    .users-table .applications-table .new-users-table__name:first-child {
+        flex: 1 0 10%;
     }
 }
 
-// Стили админ панель группы администратора
+.admin-control__buttons {
+    a svg path {
+        @include transition();
+    }
 
+    a:hover svg path {
+        stroke: #1D1D39;
+    }
+}

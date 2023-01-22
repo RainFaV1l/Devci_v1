@@ -35,6 +35,8 @@ a {
 
 body {
   color: #1D1D39;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .container {
@@ -3972,17 +3974,11 @@ html, body {
   border-top: 1px solid rgba(29, 29, 57, 0.15);
 }
 
-.new-users-table__name:first-child {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 10%;
-          flex: 0 1 10%;
-}
-
 .new-users-table__name {
   min-width: 0px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 22%;
-          flex: 0 1 22%;
+      -ms-flex: 0 1 23%;
+          flex: 0 1 23%;
   text-align: left;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4102,12 +4098,6 @@ html, body {
   }
   .admin-panel-content__info-list, .admin-panel-info__tables {
     padding-right: 0;
-  }
-  .admin-panel-info__new-users, .admin-panel-info-new-groups {
-    overflow: auto;
-  }
-  .new-users-table {
-    width: 438px;
   }
   .admin-panel-info-new-users__container {
     border: none;
@@ -4247,6 +4237,7 @@ html, body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-weight: 500;
   background: transparent;
   border: 1px solid #1D1D39;
   border-radius: 30px;
@@ -4268,20 +4259,6 @@ html, body {
 }
 .account-wrapper .menu a:hover {
   background-color: #F3F2F8 !important;
-}
-
-.admin-panel-info-new-groups .new-users-table__name:first-child,
-.admin-panel-info-users .new-users-table__name:first-child {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 10%;
-          flex: 0 1 10%;
-}
-
-.admin-panel-info-new-groups .new-users-table__name,
-.admin-panel-info-users .new-users-table__name {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
 }
 
 @media (max-width: 1800px) {
@@ -4317,9 +4294,154 @@ html, body {
   .admin-panel-content-aside-header__container {
     padding-right: 0px;
   }
-  .admin-panel-info-users .new-users-table__name:last-child {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 70%;
-            flex: 0 1 70%;
+}
+.admin-panel-info-groups__button {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 500;
+  color: #fff;
+  background-color: #6C63FF;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  padding: 15px 48px;
+}
+.admin-panel-info-groups__button:hover {
+  background-color: transparent;
+  border-color: #1D1D39;
+  color: #1D1D39;
+}
+
+.nav__a {
+  font-weight: 500;
+}
+
+.admin-control__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.admin-panel-info-users .new-users-table__id, .admin-panel-info-users .admin-control__buttons {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 15%;
+          flex: 0 1 15%;
+}
+
+.admin-control__hide svg path {
+  opacity: 0;
+  stroke: transparent;
+  z-index: -1;
+}
+
+.applications-table .new-users-table__name:last-child {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .users-table {
+    width: 100%;
   }
+  .users-table {
+    overflow-x: scroll !important;
+  }
+  .users-table .new-users-table__item {
+    border: 0px;
+  }
+  .users-table .new-users-table__name:first-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 10%;
+            flex: 1 0 10%;
+  }
+  .users-table .new-users-table__name:last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 10%;
+            flex: 1 0 10%;
+  }
+  .users-table .new-users-table__name {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+            flex: 1 0 25%;
+  }
+  .users-table .new-users-table__email {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 40%;
+            flex: 1 0 40%;
+  }
+  .users-table .groups-table .new-users-table__name:last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 55%;
+            flex: 1 0 55%;
+  }
+  .users-table .groups-table .new-users-table__name:first-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 10%;
+            flex: 1 0 10%;
+  }
+  .users-table .new-users-table-group .new-users-table__name:last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+            flex: 1 0 50%;
+  }
+  .users-table .new-users-table-group .new-users-table__name {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+            flex: 1 0 25%;
+  }
+  .users-table .new-users-table-group .new-users-table__name:first-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 10%;
+            flex: 1 0 10%;
+  }
+  .users-table .new-users-table-users .new-users-table__name:last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 40%;
+            flex: 1 0 40%;
+  }
+  .users-table .new-users-table-users .new-users-table__name {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 20%;
+            flex: 1 0 20%;
+  }
+  .users-table .new-users-table-users .new-users-table__name:first-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 10%;
+            flex: 1 0 10%;
+  }
+  .users-table .applications-table .new-users-table__name:last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+            flex: 1 0 50%;
+  }
+  .users-table .applications-table .new-users-table__name {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+            flex: 1 0 25%;
+  }
+  .users-table .applications-table .new-users-table__name:first-child {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 10%;
+            flex: 1 0 10%;
+  }
+}
+.admin-control__buttons a svg path {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.admin-control__buttons a:hover svg path {
+  stroke: #1D1D39;
 }
