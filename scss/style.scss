@@ -2062,7 +2062,6 @@ html, body {
 
 .admin-panel-info-new-users__buttons {
     display: flex;
-    align-items: center;
     gap: 30px;
 }
 
@@ -2148,6 +2147,70 @@ html, body {
     justify-content: flex-end;
 }
 
+.users-table .new-users-table__email {
+    flex: 1 0 20%;
+}
+
+// Стили таблицы с новыми группами на странице groups
+
+.users-table .new-users-table-group .new-users-table__name:last-child {
+    flex: 1 0 40%;
+}
+
+.users-table .new-users-table-group .new-users-table__name {
+    flex: 1 0 20%;
+}
+
+.users-table .new-users-table-group .new-users-table__name:first-child {
+    flex: 1 0 5%;
+}
+
+// Стили таблицы с новыми пользователями на странице users
+
+.users-table .new-users-table-users .new-users-table__name:last-child {
+    flex: 1 0 30%;
+}
+
+.users-table .new-users-table-users .new-users-table__name {
+    flex: 1 0 15%;
+}
+
+.users-table .new-users-table-users .new-users-table__name:first-child {
+    flex: 1 0 5%;
+}
+
+// Стили таблицы с заявками на странице applications
+
+.users-table .applications-table .new-users-table__name:last-child {
+    flex: 1 0 5%;
+}
+
+.users-table .applications-table .new-users-table__name:nth-child(2) {
+    flex: 1 0 5%;
+}
+
+.users-table .applications-table .new-users-table__name:nth-child(5) {
+    flex: 1 0 5%;
+}
+
+.users-table .applications-table .new-users-table__name {
+    flex: 1 0 15%;
+}
+
+.users-table .applications-table .new-users-table__name:first-child {
+    flex: 1 0 5%;
+}
+
+.new-users-table__link {
+    @include transition();
+    color: #6C63FE;
+    text-decoration: underline;
+
+    &:hover {
+        color: #1D1D39;
+    }
+}
+
 @media (max-width: 767px) {
 
     .users-table {
@@ -2210,16 +2273,32 @@ html, body {
         flex: 1 0 10%;
     }
 
+    // Стили таблицы с заявками на странице applications
+
     .users-table .applications-table .new-users-table__name:last-child {
-        flex: 1 0 50%;
+        flex: 1 0 20%;
+    }
+
+    .users-table .applications-table .new-users-table__name:nth-child(2) {
+        flex: 1 0 30%;
+    }
+
+    .users-table .applications-table .new-users-table__name:nth-child(5) {
+        flex: 1 0 30%;
     }
 
     .users-table .applications-table .new-users-table__name {
-        flex: 1 0 25%;
+        flex: 1 0 50%;
     }
 
     .users-table .applications-table .new-users-table__name:first-child {
         flex: 1 0 10%;
+    }
+}
+
+@media (max-width: 350px) {
+    .users-table .applications-table .new-users-table__name:nth-child(5) {
+        flex: 1 0 120px;
     }
 }
 
@@ -2228,7 +2307,104 @@ html, body {
         @include transition();
     }
 
-    a:hover svg path {
+    a:hover svg:not(.fill-svg) path {
         stroke: #1D1D39;
     }
+
+    a:hover .fill-svg path {
+        fill: #1D1D39;
+    }
+}
+
+.add-course-form {
+    margin-top: 70px;
+
+    form {
+        @include flex(c,s-b,null,30px,null);
+    }
+
+    .add-course-form__input {
+        @include input-null();
+        @include input-standart();
+    }
+}
+
+.add-course-form__textarea {
+    height: 195px;
+}
+
+.hidden {
+    // z-index: -1;
+    // position: absolute;
+    // overflow: hidden;
+    display: none;
+}
+
+.add-course-form-img-content {
+    text-align: center;
+    height: 400px;
+    @include flex-center();
+    // box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05), inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(29, 29, 57, 0.25);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.add-course-form-img-content__name {
+    @include gap-column(25px);
+}
+
+.add-course-form-img-content-name__text {
+    color: rgba(29, 29, 57, 0.5);
+}
+
+select {
+    cursor: pointer;
+    background: url("../assets/img/line.svg") no-repeat;
+    background-position: center right 20px;
+    color: rgba(29, 29, 57, 0.5) !important;
+}
+
+option {
+    color: #1D1D39;
+}
+
+option[value="0"] {
+    background-color: rgb(243, 242, 248) !important;
+}
+
+.add-course-form-img-content-name__text {
+    font-weight: 500 !important;
+}
+
+.add-course-form-img-content__name {
+    pointer-events: none;
+}
+
+.add-course-form-img-content-name__text.active {
+    color: #FF22B0;
+}
+
+.add-course-form-img-content__svg.active svg path {
+    fill: #FF22B0;
+}
+
+.dragable-img {
+    @include transition();
+}
+
+.dragable-img .add-course-form-img-content {
+    @include transition();
+}
+
+.drag-img-styles {
+    border-radius: 7px;
+    object-fit: contain;
+    width: 100%;
+    height: 400px;
+    padding: 20px 10px;
+}
+
+textarea {
+    resize: none;
 }

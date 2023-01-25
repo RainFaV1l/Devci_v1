@@ -95,3 +95,35 @@
     @else if $w == 'w-r' {flex-wrap:wrap-reverse;}
 
 }
+
+// Обнуление input
+
+@mixin input-null() {
+    font: inherit;
+    color: inherit;
+    outline: 0;
+    border: none;
+}
+
+@mixin input-standart() {
+    font-weight: 500;
+    border: 1px solid rgba(29, 29, 57, 0.25);
+    border-radius: 7px;
+    font-size: 18px;
+    padding: 18px 30px;
+    background-color: #fff;
+    appearance: none;
+
+    &::placeholder {
+        color: rgba(29, 29, 57, 0.5);
+        @include transition();
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+
+    option:disabled {
+        color: rgba(29, 29, 57, 0.5);
+    }
+}

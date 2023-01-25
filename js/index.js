@@ -1,4 +1,5 @@
 const burger = () => {
+
     const buttonOpen = document.querySelectorAll('.burger');
     if (!buttonOpen) return false;
 
@@ -126,12 +127,267 @@ const numberAnimation = (elems) => {
 
 }
 
+// Изменение цвета текста option (при наведении opacity: 1)
+
+const optionPlaceholder = (select) => {
+
+    // Находим select
+    const selectItems = document.querySelectorAll(select);
+
+    // Проверяем существует ли данный select
+    selectItems ? selectItems : false;
+
+    // Перебор всех select
+    selectItems.forEach((selectItem) => {
+
+        // Вешаем событие change на select
+        selectItem.addEventListener('change', () => {
+    
+            // Меняем цвет option при изменении значения option
+            selectItem.style = 'color: #1D1D39 !important;';
+            console.log(selectItem);
+
+        })
+    })
+
+}
+
+// Перетягивание элементов (drag & drop)
+
+// const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconItem, contentInfo) => {
+
+//     // Выбор всех необходимых элементов
+//     const dropArea = document.querySelector(dragableImg);
+
+//     const dragText = dropArea.querySelector(dragTextItem);
+//     const button = dropArea.querySelector(buttonItem);
+//     const input = dropArea.querySelector(inputItem);
+//     const dragIcon = dropArea.querySelector(dragIconItem);
+
+//     // Это глобальная переменная, и мы будем использовать ее внутри нескольких функций
+//     let file; 
+
+//     // Если пользователь нажмет на кнопку, тогда ввод также нажмет
+//     button.addEventListener('click', () => {
+//         input.click();
+//     })
+
+
+//     input.addEventListener("change", (event) => {
+        
+//         // Получение файла выбранного пользователем и [0] означает то, что если пользователь выберет несколько файлов, то мы выберем только первый
+//         file = event.target.files[0];
+
+//         dropArea.classList.add("active");
+
+//         // Вызываем функция
+//         showFile();
+
+//     });
+
+//     // Если пользователь перетаскивает файл поверх DropArea
+//     dropArea.addEventListener("dragover", (event) => {
+
+//         // Предотвращение поведения по умолчанию
+//         event.preventDefault();
+
+//         dropArea.classList.add("active");
+
+//         dragText.textContent = "Отпустите, чтобы загрузить файл";
+
+//     });
+
+//     // Если пользователь выведет за область перетаскиваемый файл из DropArea
+
+//     dropArea.addEventListener("dragleave", () => {
+
+//         dropArea.classList.remove("active");
+
+//         dragText.textContent = "Перетащите сюда баннер";
+
+//     });
+
+//     // Если пользователь сбросит файл на DropArea
+
+//     dropArea.addEventListener("drop", (event) => {
+
+//         // Предотвращение поведения по умолчанию
+//         event.preventDefault();
+
+//         // Получение файла выбора пользователя и [0] это означает, что если пользователь выберет несколько файлов, мы выберем только первый
+//         file = event.dataTransfer.files[0];
+
+//         // Вызов функции
+//         showFile();
+
+//     });
+
+//     function showFile() {
+        
+//         // Получение выбранного типа файла
+//         let fileType = file.type;
+
+//         // Добавление некоторых допустимых расширений изображений в массив
+//         let validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']; 
+
+//         // Если выбранный пользователем файл является изображением
+//         if(validExtensions.includes(fileType)) {
+
+//             // создание нового объекта FileReader
+//             let fileReader = new FileReader();
+
+//             fileReader.addEventListener('load', () => {
+            
+//                 // передача исходного файла пользователя в переменную fileURL
+//                 let fileURL = fileReader.result;
+
+//                 // создание тега img и передача выбранного пользователем источника файла внутри атрибута src
+//                 let imgTag = `<img class="drag-img-styles" src="${fileURL}" alt="image">`;
+
+//                 // добавление этого созданного тега img внутри контейнера dropArea
+//                 const contentInfoItem = document.querySelector(contentInfo);
+//                 contentInfoItem.innerHTML = imgTag;
+//                 // dropArea.innerHTML = imgTag;
+                
+//             });
+
+//             fileReader.readAsDataURL(file);
+
+//         } else {
+
+//             dragText.classList.add('active');
+//             dragIcon.classList.add('active');
+//             dropArea.classList.remove('active');
+//             dragText.textContent = "Неверный формат файла!";
+
+//         }
+//     }
+
+// }
+
+const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconItem, contentInfo) => {
+
+    // Выбор всех необходимых элементов
+    const dropArea = document.querySelectorAll(dragableImg);
+
+    dropArea.forEach((dropArea) => {
+        const dragText = dropArea.querySelector(dragTextItem);
+        const button = dropArea.querySelector(buttonItem);
+        const input = dropArea.querySelector(inputItem);
+        const dragIcon = dropArea.querySelector(dragIconItem);
+        const contentInfoItem = dropArea.querySelector(contentInfo);
+
+        // Это глобальная переменная, и мы будем использовать ее внутри нескольких функций
+        let file; 
+
+        // Если пользователь нажмет на кнопку, тогда ввод также нажмет
+        button.addEventListener('click', () => {
+            input.click();
+        })
+
+
+        input.addEventListener("change", (event) => {
+            
+            // Получение файла выбранного пользователем и [0] означает то, что если пользователь выберет несколько файлов, то мы выберем только первый
+            // file = event.target.files[0];
+
+            file = event.target.files[0];
+
+            dropArea.classList.add("active");
+
+            // Вызываем функция
+            showFile();
+
+        });
+
+        // Если пользователь перетаскивает файл поверх DropArea
+        dropArea.addEventListener("dragover", (event) => {
+
+            // Предотвращение поведения по умолчанию
+            event.preventDefault();
+
+            dropArea.classList.add("active");
+
+            dragText.textContent = "Отпустите, чтобы загрузить файл";
+
+        });
+
+        // Если пользователь выведет за область перетаскиваемый файл из DropArea
+
+        dropArea.addEventListener("dragleave", () => {
+
+            dropArea.classList.remove("active");
+
+            dragText.textContent = "Перетащите сюда баннер";
+
+        });
+
+        // Если пользователь сбросит файл на DropArea
+
+        dropArea.addEventListener("drop", (event) => {
+
+            // Предотвращение поведения по умолчанию
+            event.preventDefault();
+
+            // Получение файла выбора пользователя и [0] это означает, что если пользователь выберет несколько файлов, мы выберем только первый
+            file = event.dataTransfer.files[0];
+
+            // Вызов функции
+            showFile();
+
+        });
+
+        function showFile() {
+            
+            // Получение выбранного типа файла
+            let fileType = file.type;
+
+            // Добавление некоторых допустимых расширений изображений в массив
+            let validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']; 
+
+            // Если выбранный пользователем файл является изображением
+            if(validExtensions.includes(fileType)) {
+
+                // создание нового объекта FileReader
+                let fileReader = new FileReader();
+
+                fileReader.addEventListener('load', () => {
+                
+                    // передача исходного файла пользователя в переменную fileURL
+                    let fileURL = fileReader.result;
+
+                    // создание тега img и передача выбранного пользователем источника файла внутри атрибута src
+                    let imgTag = `<img class="drag-img-styles" src="${fileURL}" alt="image">`;
+
+                    // добавление этого созданного тега img внутри контейнера dropArea
+                    contentInfoItem.innerHTML = imgTag;
+                    // dropArea.innerHTML = imgTag;
+                    
+                });
+
+                fileReader.readAsDataURL(file);
+
+            } else {
+
+                dragText.classList.add('active');
+                dragIcon.classList.add('active');
+                dropArea.classList.remove('active');
+                dragText.textContent = "Неверный формат файла!";
+
+            }
+        }
+    })
+
+}
+
 const init = () => {
     burger();
     programCourse();
     navAccount();
-    accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content');
+    accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content', '.add-course-form-img__img');
     numberAnimation('.admin-panel-content-info-item__title');
+    optionPlaceholder('.add-course-form__select');
+    dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
 }
 
 document.addEventListener('DOMContentLoaded', init)
