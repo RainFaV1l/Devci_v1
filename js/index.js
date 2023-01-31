@@ -380,6 +380,51 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
 
 }
 
+// Маска для ввода телефона
+
+const telMask = (telClass) => {
+
+    const forEach = ( list, callback ) => {
+        Array.prototype.forEach.call( list, callback );
+    }
+
+    forEach( document.querySelectorAll(telClass), (input) => {
+
+        let keyCode;
+
+        function mask(event) {
+            event.keyCode && (keyCode = event.keyCode);
+            let pos = this.selectionStart;
+            if (pos < 3) event.preventDefault();
+            let matrix = "+7 (___) ___ ____",
+                i = 0,
+                def = matrix.replace(/\D/g, ""),
+                val = this.value.replace(/\D/g, ""),
+                new_value = matrix.replace(/[_\d]/g, function(a) {
+                    return i < val.length ? val.charAt(i++) || def.charAt(i) : a
+                });
+            i = new_value.indexOf("_");
+            if (i != -1) {
+                i < 5 && (i = 3);
+                new_value = new_value.slice(0, i)
+            }
+            let reg = matrix.substr(0, this.value.length).replace(/_+/g,
+                function(a) {
+                    return "\\d{1," + a.length + "}"
+                }).replace(/[+()]/g, "\\$&");
+            reg = new RegExp("^" + reg + "$");
+            if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
+            if (event.type == "blur" && this.value.length < 5)  this.value = ""
+        }
+    
+        input.addEventListener("input", mask, false);
+        input.addEventListener("focus", mask, false);
+        input.addEventListener("blur", mask, false);
+        input.addEventListener("keydown", mask, false)
+     });
+}
+
+
 const init = () => {
     burger();
     programCourse();
@@ -388,6 +433,7 @@ const init = () => {
     numberAnimation('.admin-panel-content-info-item__title');
     optionPlaceholder('.add-course-form__select');
     dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
+    telMask('.tel');
 }
 
 document.addEventListener('DOMContentLoaded', init)

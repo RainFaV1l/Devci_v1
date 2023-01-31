@@ -32,7 +32,8 @@
     font-weight: 500;
 
     @if $type == 'gradient' {
-
+        
+        color: #fff;
         background: linear-gradient(135deg, #F8A4D8 0%, #6C63FF 100%);
 
         &:hover {
@@ -41,6 +42,7 @@
     }
     @else if $type == 'border' {
 
+        color: #1D1D39;
         background: transparent;
         border: 1px solid #1D1D39;
 
@@ -99,10 +101,19 @@
 // Обнуление input
 
 @mixin input-null() {
-    font: inherit;
-    color: inherit;
     outline: 0;
     border: none;
+    font: inherit;
+    color: inherit;
+    border-radius: 7px;
+
+    &::placeholder {
+        @include transition();
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
 }
 
 @mixin input-standart() {
@@ -126,4 +137,29 @@
     option:disabled {
         color: rgba(29, 29, 57, 0.5);
     }
+
+    &:focus {
+        border-color: $blue;
+    }
+}
+
+// Кастоимный input
+
+@mixin customInput($p-t-b, $p-l-r, $w) {
+    padding: $p-t-b $p-l-r;
+    width: $w;
+    border: 1px solid rgba($color: $dark, $alpha: 0.25);
+    font-weight: 500;
+    &:focus {
+        border-color: $blue;
+    }
+}
+
+@mixin styleSelect() {
+    appearance: none;
+    cursor: pointer;
+    background: url("../assets/img/line.svg") no-repeat;
+    background-position: center right 20px;
+    color: rgba(29, 29, 57, 0.5) !important;
+    font-weight: 500;
 }

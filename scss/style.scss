@@ -1,4 +1,22 @@
 @import "null.scss";
+@import "auth.scss";
+@import "catalog.scss";
+@import "one-direction.scss";
+@import "profile.scss";
+@import "my-course.scss";
+@import "one-course.scss";
+@import "one-lesson.scss";
+@import "gift.scss";
+@import "panel.scss";
+
+// Подключаем стиль с миксинами
+@import "mixins.scss";
+
+// Подключаем стиль с переменными
+@import "variable.scss";
+
+// Подключаем стили для модальных окон
+@import "modals.scss";
 
 body {
     color: #1D1D39;
@@ -591,7 +609,7 @@ body {
     .best-course__lessons {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         font-size: 16px;
         font-weight: 500;
@@ -1098,15 +1116,15 @@ footer {
             width: 17px;
             height: 17px;
             border-radius: 100px;
-            background: #6C63FF;
+            background: $blue;
             transition: all .3s ease;
 
             &.active{
-                background: #FF22B0;
+                background: $purple;
             }
 
             &.none{
-                background: #1D1D39 !important;
+                background: $dark !important;
             }
         }
 
@@ -1131,26 +1149,25 @@ footer {
     }
 
     .arrow{
-        transition: all .3s ease;
 
-        
+        transition: all .3s ease;
 
         &.active{
             transform: rotate(-180deg);
             .arcol{
-                fill: #FF22B0;
+                fill: $purple;
             }
         }
 
         &.none{
             .arcol{
-                fill: #1D1D39;
+                fill: $dark;
             }
         }
     }
 
     .play-fill.active{
-        fill: #FF22B0;
+        fill: $purple;
     }
 
     .program-theme__end{
@@ -1160,7 +1177,7 @@ footer {
         align-items: center;
 
         .button{
-            background: #6C63FE;
+            background: $blue;
         }
     }
 }
@@ -1188,7 +1205,7 @@ footer {
 }
 
 .green{
-    color: #51C853 !important;
+    color: $green !important;
 }
 
 .courses__nav{
@@ -1200,19 +1217,6 @@ footer {
     margin-top: 50px;
     flex-wrap: wrap;
 }
-
-@import "auth.scss";
-@import "catalog.scss";
-@import "one-direction.scss";
-@import "profile.scss";
-@import "my-course.scss";
-@import "one-course.scss";
-@import "one-lesson.scss";
-@import "gift.scss";
-@import "panel.scss";
-
-// Подключаем стиль с миксинами
-@import "mixins.scss";
 
 // Debug layout errors
 
@@ -2407,4 +2411,10 @@ option[value="0"] {
 
 textarea {
     resize: none;
+}
+
+.arrow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
