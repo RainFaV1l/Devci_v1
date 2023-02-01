@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
     <script src="js/index.js" defer></script>
     <script src="js/slider.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
@@ -38,7 +38,7 @@
 
     </div>
     <div class="main-section">
-        <header>
+        <header class="opacity-anim element-animation">
             <div class="container">
                 <div class="head">
                     <div class="logo">
@@ -64,36 +64,38 @@
             <div class="container">
                 <div class="banner-wrapper">
                     <div class="banner__info">
-                        <h1 class="banner__title">
-                            Научись быть лучшим вместе с <span>Devci!</span>
-                        </h1>
                         <div class="banner__text">
-                            Мы представляем нечто новое, прекрасное и совершенное. Devci - это больше чем просто система
-                            обучения, это вклад в ваше будущее!
+                            <h1 class="banner__title header-animation element-animation">
+                                Научись быть лучшим вместе с <span>Devci!</span>
+                            </h1>
+                            <div class="banner__text text-animation element-animation">
+                                Мы представляем нечто новое, прекрасное и совершенное. Devci - это больше чем просто система
+                                обучения, это вклад в ваше будущее!
+                            </div>
                         </div>
-                        <a href="#" class="button">Вперед!</a>
+                        <a href="#" class="button element-animation opacity-anim">Вперед!</a>
                     </div>
                     <div class="banner__img">
-                        <div class="banner-cicrle">
+                        <div class="banner-cicrle element-animation opacity-anim">
                             <a href="#">
                                 <img src="assets/img/center.png" alt="">
                                 <img src="assets/img/bukv.png" alt="" class="circle">
                             </a>
                         </div>
-                        <img src="assets/img/banner.png" alt="" class="banner-img__item">
+                        <img src="assets/img/banner.png" alt="" class="banner-img__item element-animation img-anim">
                     </div>
                 </div>
                 <div class="banner-wrapper__social">
                     <div class="banner-club">
-                        <a href="https://mck-ktits.ru/">
+                        <a href="https://mck-ktits.ru/" class="element-animation opacity-items-anim">
                             <img src="assets/img/ktits.png" alt="logo-ktits">
                         </a>
-                        <a href="https://club.z-go.ru/">
+                        <a href="https://club.z-go.ru/" class="element-animation opacity-items-anim">
                             <img src="assets/img/pautina.png" alt="logo-pautina">
                         </a>
                     </div>
                     <div class="banner-social">
-                        <a href="#" class="vk">
+                        <a href="#" class="vk element-animation opacity-items-anim">
                             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="25" cy="25" r="25" fill="url(#paint0_linear_48_23740)"/>
                                 <path d="M35.7082 19.0574C35.8624 18.5203 35.7082 18.125 34.9666 18.125H32.5124C31.8874 18.125 31.5999 18.4645 31.4457 18.8426C31.4457 18.8426 30.1957 21.9836 28.4291 24.0203C27.8582 24.609 27.5957 24.798 27.2832 24.798C27.1291 24.798 26.8916 24.609 26.8916 24.0719V19.0574C26.8916 18.4129 26.7166 18.125 26.1999 18.125H22.3416C21.9499 18.125 21.7166 18.4258 21.7166 18.7051C21.7166 19.3152 22.5999 19.457 22.6916 21.1758V24.9055C22.6916 25.7219 22.5499 25.8723 22.2374 25.8723C21.4041 25.8723 19.3791 22.7184 18.1791 19.109C17.9374 18.4086 17.6999 18.125 17.0707 18.125H14.6166C13.9166 18.125 13.7749 18.4645 13.7749 18.8426C13.7749 19.5129 14.6082 22.843 17.6541 27.243C19.6832 30.2465 22.5416 31.875 25.1416 31.875C26.7041 31.875 26.8957 31.5141 26.8957 30.891C26.8957 28.0207 26.7541 27.75 27.5374 27.75C27.8999 27.75 28.5249 27.9391 29.9832 29.3871C31.6499 31.1059 31.9249 31.875 32.8582 31.875H35.3124C36.0124 31.875 36.3666 31.5141 36.1624 30.8008C35.6957 29.3012 32.5416 26.216 32.3999 26.0098C32.0374 25.5285 32.1416 25.3137 32.3999 24.884C32.4041 24.8797 35.3999 20.5312 35.7082 19.0574Z" fill="white"/>
@@ -105,7 +107,7 @@
                                 </defs>
                             </svg>   
                         </a>
-                        <a href="#" class="tg">
+                        <a href="#" class="tg element-animation opacity-items-anim">
                             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="25" cy="25" r="25" fill="url(#paint0_linear_48_23746)"/>
                                 <g clip-path="url(#clip0_48_23746)">
@@ -122,7 +124,7 @@
                                 </defs>
                             </svg>                                
                         </a>
-                        <a href="#" class="yt">
+                        <a href="#" class="yt element-animation opacity-items-anim">
                             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="25" cy="25" r="25" fill="url(#paint0_linear_48_23753)"/>
                                 <g clip-path="url(#clip0_48_23753)">
@@ -147,12 +149,12 @@
     <main>
         <section class="advantages section-padding">
             <div class="container">
-                <div class="title-main">
+                <div class="title-main header-animation element-animation">
                     <h2>Наши преимущества</h2>
                     <div class="line"></div>
                 </div>
                 <div class="advantages-wrapper">
-                    <div class="advantages__item">
+                    <div class="advantages__item opacity-items-anim element-animation">
                         <div class="name">
                             <svg width="100" height="96" viewBox="0 0 100 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M69.8864 1.00123H5.84396C5.21926 0.990644 4.59841 1.09291 4.01686 1.30218C3.43531 1.51145 2.90447 1.82362 2.45464 2.22087C2.00482 2.61812 1.64483 3.09266 1.39524 3.61739C1.14564 4.14211 1.01134 4.70674 1 5.27903V90.721C1.01134 91.2933 1.14564 91.8579 1.39524 92.3826C1.64483 92.9073 2.00482 93.3819 2.45464 93.7791C2.90447 94.1764 3.43531 94.4885 4.01686 94.6978C4.59841 94.9071 5.21926 95.0094 5.84396 94.9988H69.8864C70.5132 95.0124 71.1367 94.9124 71.7211 94.7045C72.3056 94.4966 72.8394 94.1849 73.2918 93.7873C73.7443 93.3898 74.1065 92.9142 74.3577 92.388C74.6088 91.8617 74.744 91.2952 74.7553 90.721V5.27903C74.744 4.70478 74.6088 4.13825 74.3577 3.61201C74.1065 3.08577 73.7443 2.6102 73.2918 2.21265C72.8394 1.8151 72.3056 1.50342 71.7211 1.29552C71.1367 1.08762 70.5132 0.987601 69.8864 1.00123Z" fill="#1D1D39" stroke="#1D1D39" stroke-miterlimit="10"/>
@@ -180,7 +182,7 @@
                             <img src="assets/img/arrow.png" alt="img">
                         </a>
                     </div>
-                    <div class="advantages__item">
+                    <div class="advantages__item opacity-items-anim element-animation">
                         <div class="name">
                             <svg width="108" height="102" viewBox="0 0 108 102" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_714_1694)">
@@ -224,7 +226,7 @@
                             <img src="assets/img/arrow.png" alt="img">
                         </a>
                     </div>
-                    <div class="advantages__item">
+                    <div class="advantages__item opacity-items-anim element-animation">
                         <div class="name">
                             <svg width="139" height="104" viewBox="0 0 139 104" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_714_1118)">
@@ -278,7 +280,7 @@
                             <img src="assets/img/arrow.png" alt="img">
                         </a>
                     </div>
-                    <div class="advantages__item">
+                    <div class="advantages__item opacity-items-anim element-animation">
                         <div class="name">
                             <svg width="124" height="105" viewBox="0 0 124 105" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_714_979)">
@@ -339,42 +341,42 @@
         </section>
         <section class="we section-padding">
             <div class="container">
-                <div class="title-main">
+                <div class="title-main header-animation element-animation">
                     <h2>Кто мы такие?</h2>
                     <div class="line1"></div>
                 </div>
                 <div class="we-wrapper">
                     <div class="we__info">
-                        <div class="we__title">
+                        <div class="we__title header-animation element-animation">
                             Опыт и упорство ради будущего!
                         </div>
-                        <p>Devci - это образовательная платформа, которая предоставляет доступ и оказывает услуги в
+                        <p class="text-animation element-animation">Devci - это образовательная платформа, которая предоставляет доступ и оказывает услуги в
                             сфере IT
                             технологий и не только. Компания берёт свои истоки с далекого 2017 года и являлась системой
                             обучения для студентов техникума. С тех пор прошло много времени и было выложено много сил
                             для
                             ее развитие.
                         </p>
-                        <p>
+                        <p class="text-animation element-animation">
                             Наконец мы решились запустить полностью обновленную, улучшенную и более совершенную версию
                             системы обучения назвав ее Devci.
                         </p>
-                        <a href="#" class="button">Учиться!</a>
+                        <a href="#" class="button opacity-anim element-animation">Учиться!</a>
                     </div>
                     <div class="we__img">
-                        <img src="assets/img/we.png" alt="" class="we-img__item">
+                        <img src="assets/img/we.png" alt="" class="we-img__item img-anim element-animation">
                     </div>
                 </div>
             </div>
         </section>
         <section class="best-course section-padding">
             <div class="container">
-                <div class="title-main">
+                <div class="title-main header-animation element-animation">
                     <h2>Лучшие курсы</h2>
                     <div class="line"></div>
                 </div>
                 <div class="best-course__wrapper">
-                    <div class="best-course__item">
+                    <div class="best-course__item opacity-items-anim element-animation">
                         <div class="best-course__info">
                             <div class="best-course__text">
                                 <div class="type">
@@ -401,11 +403,12 @@
                                 </div>
                             </div>
                             <a href="#" class="arrow">
+                                Подробнее
                                 <img src="assets/img/arrow2.png" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="best-course__item">
+                    <div class="best-course__item opacity-items-anim element-animation">
                         <div class="best-course__info">
                             <div class="best-course__text">
                                 <div class="type">
@@ -432,11 +435,12 @@
                                 </div>
                             </div>
                             <a href="#" class="arrow">
+                                Подробнее
                                 <img src="assets/img/arrow2.png" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="best-course__item">
+                    <div class="best-course__item opacity-items-anim element-animation">
                         <div class="best-course__info">
                             <div class="best-course__text">
                                 <div class="type">
@@ -463,11 +467,12 @@
                                 </div>
                             </div>
                             <a href="#" class="arrow">
+                                Подробнее
                                 <img src="assets/img/arrow2.png" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="best-course__item">
+                    <div class="best-course__item opacity-items-anim element-animation">
                         <div class="best-course__info">
                             <div class="best-course__text">
                                 <div class="type">
@@ -491,21 +496,21 @@
                                 </div>
                             </div>
                             <a href="#" class="arrow">
+                                Подробнее
                                 <img src="assets/img/arrow2.png" alt="">
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
         <section class="reviews section-padding">
-            <div class="title-main">
+            <div class="title-main header-animation element-animation">
                 <h2>Отзывы</h2>
                 <div class="line1"></div>
             </div>
             <div class="reviews-slider__wrapper">
-                <div class="swiper reviews-slider">
+                <div class="swiper reviews-slider opacity-anim element-animation">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="text">
@@ -619,7 +624,7 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
+    <footer class="footer opacity-anim element-animation">
         <div class="container">
             <div class="head">
                 <div class="logo">

@@ -1,3 +1,12 @@
+// Подключаем стиль с миксинами
+@import "mixins.scss";
+
+// Подключаем стиль с переменными
+@import "variable.scss";
+
+// Подключаем стили для модальных окон
+@import "modals.scss";
+
 @import "null.scss";
 @import "auth.scss";
 @import "catalog.scss";
@@ -8,15 +17,6 @@
 @import "one-lesson.scss";
 @import "gift.scss";
 @import "panel.scss";
-
-// Подключаем стиль с миксинами
-@import "mixins.scss";
-
-// Подключаем стиль с переменными
-@import "variable.scss";
-
-// Подключаем стили для модальных окон
-@import "modals.scss";
 
 body {
     color: #1D1D39;
@@ -270,7 +270,7 @@ body {
     .banner__info {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
     }
 
     .banner__title {
@@ -601,7 +601,7 @@ body {
             img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                object-fit: contain;
             }
         }
     }
@@ -1246,7 +1246,7 @@ footer {
         @include transition();
 
         &:hover {
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05), 0px 0px 4px rgba(0, 0, 0, 0.25);
+            //box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05), 0px 0px 4px rgba(0, 0, 0, 0.25);
         }
 
     }
@@ -2414,7 +2414,165 @@ textarea {
 }
 
 .arrow {
-    width: 100%;
     display: flex;
     justify-content: flex-end;
+    gap: 15px;
+    color: $blue;
+}
+
+.catalog-banner__head, .catalog-banner__text {
+    font-weight: 500 !important;
+}
+
+.line {
+    position: static !important;
+}
+
+.directions-head_category a {
+
+    @include transition();
+
+    &:hover {
+        color: $blue;
+    }
+
+}
+
+.directions-category__main a[class = active] {
+    @include button(null, null, gradient);
+}
+
+.directions-category__main a {
+    @include button(null, null, border);
+}
+
+.directions-category__all-course {
+    font-weight: 500 !important;
+}
+
+.best-course__lessons {
+    @include flex-center();
+    align-items: center !important;
+}
+
+@media (max-width: 600px) {
+
+    .arrow {
+        width: 100%;
+    }
+
+    .best-course__info {
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+
+    .best-course__item {
+        align-items: flex-start;
+    }
+
+    .best-course__lessons {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .best-course__lessons {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+}
+
+// Анимации плавного появления
+
+.header-animation.element-animation {
+    transition: all .7s ease-in-out;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.header-animation.element-animation.element-show {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.text-animation.element-animation {
+    transition: all .7s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.text-animation.element-animation.element-show {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.opacity-anim.element-animation {
+    transition: all .7s ease-in-out;
+    opacity: 0;
+}
+
+.opacity-anim.element-animation.element-show  {
+    opacity: 1;
+}
+
+.opacity-items-anim.element-animation {
+    transition: all .7s ease-in-out;
+    opacity: 0;
+}
+
+.opacity-items-anim.element-animation.element-show  {
+    opacity: 1;
+}
+
+.opacity-items-anim:nth-of-type(2).element-show  {
+    opacity: 1;
+    transition-delay: .15s;
+}
+
+.opacity-items-anim:nth-of-type(3).element-show  {
+    opacity: 1;
+    transition-delay: .15s;
+}
+
+.opacity-items-anim:nth-of-type(4).element-show  {
+    opacity: 1;
+    transition-delay: .15s;
+}
+
+.img-anim.element-animation {
+    transition: all .7s ease-in-out;
+    opacity: 0;
+    transform: rotate(-5deg);
+}
+
+.img-anim.element-animation.element-show {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+// Анимации плавного появления конец
+
+.banner__text {
+    @include gap-column(30px);
+}
+
+.reviews .reviews-slider .swiper-slide .text {
+    line-height: 200%;
+}
+
+// Стилизация скролл-бара для webkit
+
+body::-webkit-scrollbar {
+    width: 10px; /* Ширина всего элемента навигации */
+}
+  
+body::-webkit-scrollbar-track {
+    background-color: #fff; /* Цвет дорожки */
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: $blue; /* Цвет бегунка */
+    border-radius: 20px; /* Округление бегунка */
+    //border: 3px solid #050c26; /* Оформление границ бегунка */
 }

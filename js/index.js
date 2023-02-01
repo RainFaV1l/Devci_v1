@@ -424,6 +424,59 @@ const telMask = (telClass) => {
      });
 }
 
+const elAnim = () => {
+
+    const onEntry = (entry) => {
+        entry.forEach(change => {
+            if (change.isIntersecting) {
+                change.target.classList.add('element-show');
+            } else {
+                //change.target.classList.remove('element-show');
+            }
+        });
+    }
+      
+    let options = { threshold: [0.5] };
+    let observer = new IntersectionObserver(onEntry, options);
+    let elements = document.querySelectorAll('.element-animation');
+    
+    elements.forEach(elm => {
+        observer.observe(elm);
+    });
+
+}
+
+const smoothScroll = () => {
+
+    SmoothScroll({
+        // Время скролла 400 = 0.4 секунды
+        animationTime    : 800,
+        // Размер шага в пикселях 
+        stepSize         : 75,
+    
+        // Дополнительные настройки:
+        
+        // Ускорение 
+        accelerationDelta : 30,  
+        // Максимальное ускорение
+        accelerationMax   : 2,   
+    
+        // Поддержка клавиатуры
+        keyboardSupport   : true,  
+        // Шаг скролла стрелками на клавиатуре в пикселях
+        arrowScroll       : 50,
+    
+        // Pulse (less tweakable)
+        // ratio of "tail" to "acceleration"
+        pulseAlgorithm   : true,
+        pulseScale       : 4,
+        pulseNormalize   : 1,
+    
+        // Поддержка тачпада
+        touchpadSupport   : true,
+    })
+
+}
 
 const init = () => {
     burger();
@@ -434,6 +487,8 @@ const init = () => {
     optionPlaceholder('.add-course-form__select');
     dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
     telMask('.tel');
+    elAnim();
+    smoothScroll();
 }
 
 document.addEventListener('DOMContentLoaded', init)

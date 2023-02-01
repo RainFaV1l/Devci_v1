@@ -126,6 +126,8 @@
         transition: all .3s ease;
         user-select: none;
 
+        @include transition();
+
         h3 {
             font-size: 24px;
             font-weight: 700;
@@ -147,6 +149,7 @@
 }
 
 .title {
+
     .line1 {
         background: #895EF6;
     }
@@ -361,4 +364,8 @@
     display: flex;
     align-items: center;
     gap: 7px;
+}
+
+.program .program-themes__item .about {
+    top: 75px !important;
 }
