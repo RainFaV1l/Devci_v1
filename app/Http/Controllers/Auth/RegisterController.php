@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Laravel\Jetstream\Jetstream;
+
 class RegisterController extends Controller
 {
     /*
@@ -50,9 +52,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'surname' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
+            'patronymic' => ['required', 'string', 'max:255'],
+            'birthday_date' => ['required', 'date', 'max:255'],
+            'tel' => ['required', 'string', 'min:17', 'max:17', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ]);
     }
 
@@ -65,7 +72,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'surname' => $data['surname'],
             'name' => $data['name'],
+            'patronymic' => $data['patronymic'],
+            'birthday_date' => $data['birthday_date'],
+            'last_auth_date' => date('Y-m-d h-m-s', time()),
+            'tel' => $data['tel'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

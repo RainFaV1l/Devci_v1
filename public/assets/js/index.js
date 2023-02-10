@@ -31,7 +31,7 @@ const burger = () => {
             parent.classList.remove('active');
         }, 300);
         bg.classList.remove('active');
-        
+
     });
 
     parent.addEventListener('click', (e) => {
@@ -39,7 +39,7 @@ const burger = () => {
             content.classList.remove('active');
             setTimeout(() => {
                 parent.classList.remove('active');
-                
+
             }, 300)
             bg.classList.remove('active');
         }
@@ -142,7 +142,7 @@ const optionPlaceholder = (select) => {
 
         // Вешаем событие change на select
         selectItem.addEventListener('change', () => {
-    
+
             // Меняем цвет option при изменении значения option
             selectItem.style = 'color: #1D1D39 !important;';
             console.log(selectItem);
@@ -165,7 +165,7 @@ const optionPlaceholder = (select) => {
 //     const dragIcon = dropArea.querySelector(dragIconItem);
 
 //     // Это глобальная переменная, и мы будем использовать ее внутри нескольких функций
-//     let file; 
+//     let file;
 
 //     // Если пользователь нажмет на кнопку, тогда ввод также нажмет
 //     button.addEventListener('click', () => {
@@ -174,7 +174,7 @@ const optionPlaceholder = (select) => {
 
 
 //     input.addEventListener("change", (event) => {
-        
+
 //         // Получение файла выбранного пользователем и [0] означает то, что если пользователь выберет несколько файлов, то мы выберем только первый
 //         file = event.target.files[0];
 
@@ -223,12 +223,12 @@ const optionPlaceholder = (select) => {
 //     });
 
 //     function showFile() {
-        
+
 //         // Получение выбранного типа файла
 //         let fileType = file.type;
 
 //         // Добавление некоторых допустимых расширений изображений в массив
-//         let validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']; 
+//         let validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
 
 //         // Если выбранный пользователем файл является изображением
 //         if(validExtensions.includes(fileType)) {
@@ -237,7 +237,7 @@ const optionPlaceholder = (select) => {
 //             let fileReader = new FileReader();
 
 //             fileReader.addEventListener('load', () => {
-            
+
 //                 // передача исходного файла пользователя в переменную fileURL
 //                 let fileURL = fileReader.result;
 
@@ -248,7 +248,7 @@ const optionPlaceholder = (select) => {
 //                 const contentInfoItem = document.querySelector(contentInfo);
 //                 contentInfoItem.innerHTML = imgTag;
 //                 // dropArea.innerHTML = imgTag;
-                
+
 //             });
 
 //             fileReader.readAsDataURL(file);
@@ -278,7 +278,7 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
         const contentInfoItem = dropArea.querySelector(contentInfo);
 
         // Это глобальная переменная, и мы будем использовать ее внутри нескольких функций
-        let file; 
+        let file;
 
         // Если пользователь нажмет на кнопку, тогда ввод также нажмет
         button.addEventListener('click', () => {
@@ -287,7 +287,7 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
 
 
         input.addEventListener("change", (event) => {
-            
+
             // Получение файла выбранного пользователем и [0] означает то, что если пользователь выберет несколько файлов, то мы выберем только первый
             // file = event.target.files[0];
 
@@ -338,12 +338,12 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
         });
 
         function showFile() {
-            
+
             // Получение выбранного типа файла
             let fileType = file.type;
 
             // Добавление некоторых допустимых расширений изображений в массив
-            let validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml']; 
+            let validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
 
             // Если выбранный пользователем файл является изображением
             if(validExtensions.includes(fileType)) {
@@ -352,7 +352,7 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
                 let fileReader = new FileReader();
 
                 fileReader.addEventListener('load', () => {
-                
+
                     // передача исходного файла пользователя в переменную fileURL
                     let fileURL = fileReader.result;
 
@@ -362,7 +362,7 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
                     // добавление этого созданного тега img внутри контейнера dropArea
                     contentInfoItem.innerHTML = imgTag;
                     // dropArea.innerHTML = imgTag;
-                    
+
                 });
 
                 fileReader.readAsDataURL(file);
@@ -416,7 +416,7 @@ const telMask = (telClass) => {
             if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) this.value = new_value;
             if (event.type == "blur" && this.value.length < 5)  this.value = ""
         }
-    
+
         input.addEventListener("input", mask, false);
         input.addEventListener("focus", mask, false);
         input.addEventListener("blur", mask, false);
@@ -435,11 +435,11 @@ const elAnim = () => {
             }
         });
     }
-      
+
     let options = { threshold: [0.5] };
     let observer = new IntersectionObserver(onEntry, options);
     let elements = document.querySelectorAll('.element-animation');
-    
+
     elements.forEach(elm => {
         observer.observe(elm);
     });
@@ -451,31 +451,46 @@ const smoothScroll = () => {
     SmoothScroll({
         // Время скролла 400 = 0.4 секунды
         animationTime    : 800,
-        // Размер шага в пикселях 
+        // Размер шага в пикселях
         stepSize         : 75,
-    
+
         // Дополнительные настройки:
-        
-        // Ускорение 
-        accelerationDelta : 30,  
+
+        // Ускорение
+        accelerationDelta : 30,
         // Максимальное ускорение
-        accelerationMax   : 2,   
-    
+        accelerationMax   : 2,
+
         // Поддержка клавиатуры
-        keyboardSupport   : true,  
+        keyboardSupport   : true,
         // Шаг скролла стрелками на клавиатуре в пикселях
         arrowScroll       : 50,
-    
+
         // Pulse (less tweakable)
         // ratio of "tail" to "acceleration"
         pulseAlgorithm   : true,
         pulseScale       : 4,
         pulseNormalize   : 1,
-    
+
         // Поддержка тачпада
         touchpadSupport   : true,
     })
 
+}
+
+// Preloader
+
+const preloader = () => {
+    let preloader = document.getElementById('preloader');
+    if(preloader) {
+        let body = document.querySelector('body');
+        body.classList.add('active');
+        preloader.classList.add('active');
+        window.addEventListener('load', () => {
+            preloader.classList.remove('active');
+            body.classList.remove('active');
+        })
+    }
 }
 
 const init = () => {
@@ -489,6 +504,7 @@ const init = () => {
     telMask('.tel');
     elAnim();
     smoothScroll();
+    preloader();
 }
 
 document.addEventListener('DOMContentLoaded', init)

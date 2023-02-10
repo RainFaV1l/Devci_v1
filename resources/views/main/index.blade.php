@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('page-title') Главная старница @endsection
+
+@section('gray-main-section') index @endsection
+
 @section('banner')
     <div class="banner">
         <div class="container">
@@ -14,7 +18,7 @@
                             обучения, это вклад в ваше будущее!
                         </div>
                     </div>
-                    <a href="#" class="button">Вперед!</a>
+                    <a href="#" class="button opacity-anim element-animation">Начать обучение</a>
                 </div>
                 <div class="banner__img">
                     <div class="banner-cicrle element-animation opacity-anim">
@@ -25,19 +29,19 @@
                                     <path d="M7.19817 21.6107C7.58869 22.0012 8.22186 22.0012 8.61238 21.6107L14.9763 15.2467C15.3669 14.8562 15.3669 14.223 14.9763 13.8325C14.5858 13.442 13.9527 13.442 13.5621 13.8325L7.90527 19.4894L2.24842 13.8325C1.85789 13.442 1.22473 13.442 0.834206 13.8325C0.443681 14.223 0.443681 14.8562 0.834206 15.2467L7.19817 21.6107ZM6.90527 0.903564L6.90527 10.9036H8.90527L8.90527 0.903564L6.90527 0.903564ZM6.90527 10.9036L6.90527 20.9036H8.90527L8.90527 10.9036H6.90527Z" fill="white"/>
                                 </svg>
                             </div>
-                            <img src="{{asset('assets/img/bukv.png')}}" alt="Буквы" class="circle">
+                            <img src="{{asset('assets/img/bukv.png')}}" alt="Изображение букв" class="circle">
                         </a>
                     </div>
-                    <img src="{{asset('assets/img/banner.png')}}" alt="" class="banner-img__item element-animation img-anim">
+                    <img src="{{asset('assets/img/banner.png')}}" alt="Изображение ракеты" class="banner-img__item element-animation img-anim">
                 </div>
             </div>
             <div class="banner-wrapper__social">
                 <div class="banner-club">
                     <a href="https://mck-ktits.ru/" class="element-animation opacity-items-anim">
-                        <img src="{{asset('assets/img/ktits.png')}}" alt="logo-ktits">
+                        <img src="{{asset('assets/img/ktits.png')}}" alt="Логотип КТИТС">
                     </a>
                     <a href="https://club.z-go.ru/" class="element-animation opacity-items-anim">
-                        <img src="{{asset('assets/img/pautina.png')}}" alt="logo-pautina">
+                        <img src="{{asset('assets/img/pautina.png')}}" alt="Логотип Паутина">
                     </a>
                 </div>
                 <div class="banner-social">
@@ -94,7 +98,6 @@
 @endsection('banner')
 
 @section('content')
-<main>
     <section class="advantages section-padding">
         <div class="container">
             <div class="title-main header-animation element-animation">
@@ -127,7 +130,7 @@
                     </div>
                     <a href="">
                         <p>Подробнее</p>
-                        <img src="assets/img/arrow.png" alt="img">
+                        <img src="{{asset('assets/img/arrow.png')}}" alt="Изображение линии">
                     </a>
                 </div>
                 <div class="advantages__item opacity-items-anim element-animation">
@@ -171,7 +174,7 @@
                     </div>
                     <a href="">
                         <p>Подробнее</p>
-                        <img src="assets/img/arrow.png" alt="img">
+                        <img src="{{asset('assets/img/arrow.png')}}" alt="Изображение линии">
                     </a>
                 </div>
                 <div class="advantages__item opacity-items-anim element-animation">
@@ -225,7 +228,7 @@
                     </div>
                     <a href="">
                         <p>Подробнее</p>
-                        <img src="assets/img/arrow.png" alt="img">
+                        <img src="{{asset('assets/img/arrow.png')}}" alt="Изображение линии">
                     </a>
                 </div>
                 <div class="advantages__item opacity-items-anim element-animation">
@@ -281,7 +284,7 @@
                     </div>
                     <a href="#">
                         <p>Подробнее</p>
-                        <img src="assets/img/arrow.png" alt="img">
+                        <img src="{{asset('assets/img/arrow.png')}}" alt="Изображение линии">
                     </a>
                 </div>
             </div>
@@ -309,10 +312,10 @@
                         Наконец мы решились запустить полностью обновленную, улучшенную и более совершенную версию
                         системы обучения назвав ее Devci.
                     </p>
-                    <a href="#" class="button opacity-anim text-animation">Учиться!</a>
+                    <a href="#" class="button opacity-anim element-animation">Начать обучение</a>
                 </div>
                 <div class="we__img">
-                    <img src="assets/img/we.png" alt="" class="we-img__item img-anim element-animation">
+                    <img src="{{asset('assets/img/we.png')}}" alt="Изображение «Кто мы такие?»" class="we-img__item element-animation img-anim">
                 </div>
             </div>
         </div>
@@ -338,7 +341,7 @@
                             </div>
                         </div>
                         <div class="best-course__img">
-                            <img src="assets/img/c1.png" alt="">
+                            <img src="{{asset('assets/img/c1.png')}}" alt="Иконка курса">
                         </div>
                     </div>
                     <div class="best-course__lessons">
@@ -352,7 +355,7 @@
                         </div>
                         <a href="#" class="arrow">
                             Подробнее
-                            <img src="assets/img/arrow2.png" alt="">
+                            <img src="{{asset('assets/img/arrow2.png')}}" alt="Иконка подробнее">
                         </a>
                     </div>
                 </div>
@@ -370,7 +373,7 @@
                             </div>
                         </div>
                         <div class="best-course__img">
-                            <img src="assets/img/c2.png" alt="">
+                            <img src="{{asset('assets/img/c2.png')}}" alt="Иконка курса">
                         </div>
                     </div>
                     <div class="best-course__lessons">
@@ -384,7 +387,7 @@
                         </div>
                         <a href="#" class="arrow">
                             Подробнее
-                            <img src="assets/img/arrow2.png" alt="">
+                            <img src="{{asset('assets/img/arrow2.png')}}" alt="Иконка подробнее">
                         </a>
                     </div>
                 </div>
@@ -402,7 +405,7 @@
                             </div>
                         </div>
                         <div class="best-course__img">
-                            <img src="assets/img/c3.png" alt="">
+                            <img src="{{asset('assets/img/c3.png')}}" alt="Иконка курса">
                         </div>
                     </div>
                     <div class="best-course__lessons">
@@ -416,7 +419,7 @@
                         </div>
                         <a href="#" class="arrow">
                             Подробнее
-                            <img src="assets/img/arrow2.png" alt="">
+                            <img src="{{asset('assets/img/arrow2.png')}}" alt="Иконка подробнее">
                         </a>
                     </div>
                 </div>
@@ -434,7 +437,7 @@
                             </div>
                         </div>
                         <div class="best-course__img">
-                            <img src="assets/img/c4.png" alt="">
+                            <img src="{{asset('assets/img/c4.png')}}" alt="">
                         </div>
                     </div>
                     <div class="best-course__lessons">
@@ -445,7 +448,7 @@
                         </div>
                         <a href="#" class="arrow">
                             Подробнее
-                            <img src="assets/img/arrow2.png" alt="">
+                            <img src="{{asset('assets/img/arrow2.png')}}" alt="Иконка подробнее">
                         </a>
                     </div>
                 </div>
@@ -462,81 +465,81 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="text">
-                            “Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
+                            «Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
                             своим
                             внешним видом вызывала лишь ужас и полное непонимание. Сама платформа очень удобная,
                             всегда
-                            можно задать вопрос. “
+                            можно задать вопрос.»
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="assets/avatar/user.png" alt="">
+                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
                             </div>
                             <div class="name">
                                 Альфис Мусин
                             </div>
                             <div class="rating">
-                                <img src="assets/img/stars.png" alt="">
+                                <img src="{{asset('assets/img/stars.png')}}" alt="Рейтинг оценки">
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="text">
-                            “Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
+                            «Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
                             своим
                             внешним видом вызывала лишь ужас и полное непонимание. Сама платформа очень удобная,
                             всегда
-                            можно задать вопрос. “
+                            можно задать вопрос.»
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="assets/avatar/user.png" alt="">
+                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
                             </div>
                             <div class="name">
                                 Альфис Мусин
                             </div>
                             <div class="rating">
-                                <img src="assets/img/stars.png" alt="">
+                                <img src="{{asset('assets/img/stars.png')}}" alt="Рейтинг оценки">
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="text">
-                            “Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
+                            «Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
                             своим
                             внешним видом вызывала лишь ужас и полное непонимание. Сама платформа очень удобная,
                             всегда
-                            можно задать вопрос. “
+                            можно задать вопрос.»
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="assets/avatar/user.png" alt="">
+                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
                             </div>
                             <div class="name">
                                 Альфис Мусин
                             </div>
                             <div class="rating">
-                                <img src="assets/img/stars.png" alt="">
+                                <img src="{{asset('assets/img/stars.png')}}" alt="Рейтинг оценки">
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="text">
-                            “Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
+                            «Курс на 100% соответствует своему названию! Я быстро освоил программу, которая раньше
                             своим
                             внешним видом вызывала лишь ужас и полное непонимание. Сама платформа очень удобная,
                             всегда
-                            можно задать вопрос. “
+                            можно задать вопрос.»
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="assets/avatar/user.png" alt="">
+                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
                             </div>
                             <div class="name">
                                 Альфис Мусин
                             </div>
                             <div class="rating">
-                                <img src="assets/img/stars.png" alt="">
+                                <img src="{{asset('assets/img/stars.png')}}" alt="Рейтинг оценки">
                             </div>
                         </div>
                     </div>
@@ -571,5 +574,4 @@
             </div>
         </div>
     </section>
-</main>
 @endsection('content')

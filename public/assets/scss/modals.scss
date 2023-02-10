@@ -39,7 +39,7 @@
 .modal__title {
     font-weight: 700;
     font-size: 48px;
-    line-height: 59 / 48 * 100%;
+    line-height: calc(59 / 48 * 100%);
 }
 
 .modal__subtitle {
