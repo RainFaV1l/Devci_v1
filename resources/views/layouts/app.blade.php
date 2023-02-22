@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('page-title')</title>
+    <link rel="shortcut icon" href="{{asset('assets/img/favicon/favicon.svg')}}" type="image/svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
+    <script src="{{asset('assets/js/index.js')}}" defer></script>
+    <script src="{{asset('assets/js/slider.js')}}" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="{{asset('assets/scss/style.scss')}}">
+    <script src="{{ asset('js/app.js') }}"></script>
+    {{--    @vite(['public/assets/scss/style.scss', 'public/assets/css/style.css'], 'assets/js/index.js')--}}
+    @vite(['public/assets/scss/style.scss'], 'assets/js/index.js')
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    @livewireScripts
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <script src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.2.5-jwYMmpCb8mVWq1WRn6YH/mode=imports,min/optimized/@hotwired/turbo.js" type="module">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </script>
 
-        <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+</head>
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+<body class="@yield('grey-bg')">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+<!--Фон для меню-->
+<div class="bg-black"></div>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
 
-        @stack('modals')
+<div class="wrapper">
+    <div class="main-section @yield('gray-main-section')">
+        @include('components.header')
+        @yield('banner')
+    </div>
 
-        @livewireScripts
-    </body>
+    <main class="main">
+        @yield('content')
+    </main>
+
+    @include('components.footer')
+
+</div>
+
+</body>
 </html>

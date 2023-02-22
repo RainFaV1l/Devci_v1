@@ -15,23 +15,12 @@ return new class extends Migration
     {
         Schema::create('lesson_comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('lesson_id');
-            $table->unsignedBigInteger('teacher_id');
-            $table->unsignedBigInteger('student_id');
+            $table->foreignId('lesson_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('teacher_id')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('student_id')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('text');
             $table->timestamps();
-
-            // Указываем на связь таблицы lesson_comments с таблицой lessons
-            $table->index('lesson_id', 'lesson_comment_lesson_idx');
-            $table->foreign('lesson_id', 'lesson_comment_lesson_fk')->on('lessons')->references('id');
-
-            // Указываем на связь таблицы lesson_comments с таблицой users
-            $table->index('teacher_id', 'lesson_comment_teacher_idx');
-            $table->foreign('teacher_id', 'lesson_comment_teacher_fk')->on('users')->references('id');
-
-            // Указываем на связь таблицы lesson_comments с таблицой lessons
-            $table->index('student_id', 'lesson_comment_student_idx');
-            $table->foreign('student_id', 'lesson_comment_student_fk')->on('users')->references('id');
+//            $table->softDeletes();
         });
     }
 

@@ -15,17 +15,10 @@ return new class extends Migration
     {
         Schema::create('lesson_modules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('lesson_id');
-            $table->unsignedBigInteger('module_id');
+            $table->foreignId('lesson_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('module_id')->constrained('group_modules', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
-
-            // Указываем на связь таблицы lesson_modules с таблицой lessons
-            $table->index('lesson_id', 'lesson_module_lesson_idx');
-            $table->foreign('lesson_id', 'lesson_module_lesson_fk')->on('lessons')->references('id');
-
-            // Указываем на связь таблицы lesson_modules с таблицой group_modules
-            $table->index('module_id', 'lesson_module_group_module_idx');
-            $table->foreign('module_id', 'lesson_module_group_module_fk')->on('group_modules')->references('id');
+//            $table->softDeletes();
         });
     }
 

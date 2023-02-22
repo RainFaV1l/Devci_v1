@@ -20,13 +20,14 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('tel')->unique();
-            $table->tinyInteger('role')->default(1);
+            $table->foreignId('role_id')->default(1)->constrained('user_roles', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->date('birthday_date');
             $table->dateTime('last_auth_date');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
+//            $table->softDeletes();
         });
     }
 

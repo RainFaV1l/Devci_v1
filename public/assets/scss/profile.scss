@@ -13,6 +13,7 @@
 }
 
 .profile {
+    margin-top: 50px;
     color: #1D1D39;
 
     .profile-wrapper {
@@ -20,7 +21,7 @@
         grid-template-columns: 440px 808px;
         gap: 30px;
         background: #F3F2F8;
-        margin: 50px 0px 50px 0px;
+        margin: 0px 0px 100px 0px;
     }
 
     .profile__info {

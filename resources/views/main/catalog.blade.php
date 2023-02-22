@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="catalog-banner__img">
-                    <img src="assets/img/catalog-banner.png" alt="">
+                    <img src="{{asset('assets/img/catalog-banner.png')}}" alt="Изображение баннера">
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="best-course__img">
-                            <img src="assets/img/c3.png" alt="">
+                            <img src="{{asset('assets/img/c3.png')}}" alt="Изображение курса">
                         </div>
                     </div>
                     <div class="best-course__lessons">
@@ -79,7 +79,7 @@
                         </div>
                         <a href="#" class="arrow">
                             Подробнее
-                            <img src="assets/img/arrow2.png" alt="">
+                            <img src="{{asset('assets/img/arrow2.png')}}" alt="Стрелка подробнее">
                         </a>
                     </div>
                 </div>

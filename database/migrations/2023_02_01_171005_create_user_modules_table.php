@@ -15,14 +15,11 @@ return new class extends Migration
     {
         Schema::create('user_modules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('module_id');
-            $table->unsignedBigInteger('status_id');
+            $table->foreignId('student_id')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('module_id')->constrained('group_modules', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('status_id')->constrained('user_modules_statuses', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
-
-            // Указываем на связь таблицы user_modules с таблицой user_module_statuses
-            $table->index('status_id', 'user_module_user_module_status_idx');
-            $table->foreign('status_id', 'user_module_user_module_status_fk')->on('user_modules_statuses')->references('id');
+//            $table->softDeletes();
         });
     }
 

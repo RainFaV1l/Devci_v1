@@ -19,14 +19,19 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->unsignedFloat('price')->nullable();
             $table->string('author')->unique();
-            $table->unsignedBigInteger('course_category_id')->nullable();
+            $table->foreignId('course_category_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('course_icon_path')->nullable();
             $table->string('course_banner_path')->nullable();
             $table->timestamps();
+//            $table->softDeletes();
 
             // Указываем на связь таблицы courses с таблицой course_categories
-            $table->index('course_category_id', 'course_category_idx');
-            $table->foreign('course_category_id', 'course_category_fk')->on('course_categories')->references('id');
+//            $table->index('course_category_id', 'course_category_idx');
+//            $table->foreign('course_category_id', 'course_category_fk')
+//                ->on('course_categories')
+//                ->references('id')
+//                ->cascadeOnDelete()
+//                ->cascadeOnUpdate();
         });
     }
 

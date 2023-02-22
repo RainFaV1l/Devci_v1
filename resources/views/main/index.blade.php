@@ -98,7 +98,7 @@
 @endsection('banner')
 
 @section('content')
-    <section class="advantages section-padding">
+    <section class="advantages section-padding anchor" id="benefits">
         <div class="container">
             <div class="title-main header-animation element-animation">
                 <h2>Наши преимущества</h2>
@@ -290,7 +290,7 @@
             </div>
         </div>
     </section>
-    <section class="we section-padding">
+    <section class="we section-padding anchor" id="about">
         <div class="container">
             <div class="title-main header-animation element-animation">
                 <h2>Кто мы такие?</h2>
@@ -455,7 +455,7 @@
             </div>
         </div>
     </section>
-    <section class="reviews section-padding">
+    <section class="reviews section-padding anchor" id="review">
         <div class="title-main header-animation element-animation">
             <h2>Отзывы</h2>
             <div class="line1"></div>

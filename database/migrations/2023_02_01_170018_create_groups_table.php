@@ -15,13 +15,10 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('teacher_id');
+            $table->foreignId('teacher_id')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->timestamps();
-
-            // Указываем на связь таблицы users с таблицой groups
-            $table->index('teacher_id', 'group_user_idx');
-            $table->foreign('teacher_id', 'group_user_fk')->on('users')->references('id');
+//            $table->softDeletes();
         });
     }
 

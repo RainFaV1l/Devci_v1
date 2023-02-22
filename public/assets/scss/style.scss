@@ -36,11 +36,15 @@ body {
 
 .main-section {
     padding: 0px 0px 50px 0px;
-    background: #fff !important;
+    //background: #fff !important;
     overflow: hidden;
 }
 
-.main-section.index {
+.main-section header {
+    background-color: #FFFFFF;
+}
+
+.main-section.index, .main-section.index header {
     background: #F3F2F8 !important;
 }
 
@@ -541,11 +545,6 @@ body {
         .best-course__info {
             flex-direction: column-reverse !important;
         }
-
-        .best-course__lessons {
-            flex-direction: column !important;
-            gap: 30px;
-        }
     }
 
     .best-course__wrapper {
@@ -711,7 +710,7 @@ body {
 // --------------footer
 
 footer {
-    padding: 50px 0px;
+    padding: 25px 0;
 }
 
 @media screen and (max-width:480px) {
@@ -1301,7 +1300,7 @@ img {
     }
 
     .banner__info {
-        align-items: center;
+        align-items: center !important;
         text-align: center;
     }
 
@@ -2466,10 +2465,6 @@ textarea {
 }
 
 @media (max-width: 600px) {
-
-    .arrow {
-        width: 100%;
-    }
 
     .best-course__info {
         align-items: flex-start !important;
