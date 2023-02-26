@@ -129,10 +129,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="button">Сохранить</button>
+                                <div class="form__item-button">
+                                    <button type="submit" class="button">Сохранить</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="profile__personal-password profile__personal-email">
+                        <div class="profile__personal-password profile__personal-email profile__personal-tel">
                             <div class="title">
                                 Смена телефона
                             </div>
@@ -163,10 +165,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="button">Сохранить</button>
+                                <div class="form__item-button">
+                                    <button type="submit" class="button">Сохранить</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="profile__personal-password">
+                        <div class="profile__personal-password profile__personal-password-pass">
                             <div class="title">
                                 Смена пароля
                             </div>
@@ -183,7 +187,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="div"></div>
                                 <div class="form__item">
                                     <div class="error__input-column">
                                         <div class="input-column @error('password_new') error @enderror">
@@ -209,7 +212,9 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="button">Сохранить</button>
+                                <div class="form__item-button">
+                                    <button type="submit" class="button">Сохранить</button>
+                                </div>
                             </form>
                         </div>
                     </div>

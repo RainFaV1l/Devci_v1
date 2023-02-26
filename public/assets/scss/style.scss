@@ -2882,7 +2882,19 @@ button {
 }
 
 .form__item-button {
-    width: 59%;
+    width: 59.5%;
+}
+
+.profile__personal-email .form__item-button {
+    width: 29.2%;
+}
+
+.profile__personal-email .profile__personal-tel {
+    width: 29.2%;
+}
+
+.profile__personal-password-pass .form__item-button {
+    width: 90%;
 }
 
 .profile .profile__user .profile__ava .ava {
