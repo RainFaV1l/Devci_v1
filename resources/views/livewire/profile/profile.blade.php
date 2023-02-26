@@ -138,7 +138,7 @@
                             <div class="title">
                                 Смена телефона
                             </div>
-                            <form method="post" action="{{ route('profile.changeTel', $user) }}" novalidate>
+                            <form method="post" action="{{ route('profile.changeTel', $user) }}">
                                 @csrf
                                 <div class="form__item">
                                     <div class="error__input-column">
@@ -174,7 +174,7 @@
                             <div class="title">
                                 Смена пароля
                             </div>
-                            <form method="post" action="{{ route('profile.changePassword', $user) }}" novalidate>
+                            <form method="post" action="{{ route('profile.changePassword', $user) }}">
                                 @csrf
                                 <div class="form__item">
                                     <div class="error__input-column">

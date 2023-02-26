@@ -50,13 +50,18 @@
                     <div class="account-wrapper">
                         <div data-turbolinks-permanent class="name">
                             <div class="arrow">
-                                <img src="assets/img/arrow.png" alt="">
+                                <img src="{{ asset('assets/img/arrow.png') }}" alt="icon">
                             </div>
                             <p>
                                 {{ \App\Models\User::getFIO() }}
                             </p>
                             <div class="ava">
-                                <img src="assets/avatar/user.png" alt="">
+                                @if(\Illuminate\Support\Facades\Auth::user()->profile_photo_path)
+                                    <img src="{{ asset(\Illuminate\Support\Facades\Auth::user()->profile_photo_path) }}" alt="avatar">
+                                @else
+                                    <img src="{{ asset('assets/img/gamer.png') }}" alt="avatar">
+                                @endif
+
                             </div>
                         </div>
                         <div class="menu">

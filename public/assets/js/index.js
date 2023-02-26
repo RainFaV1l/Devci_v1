@@ -594,7 +594,6 @@ const init = () => {
     numberAnimation('.admin-panel-content-info-item__title');
     optionPlaceholder('.add-course-form__select');
     dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
-    telMask('.tel');
     elAnim();
     smoothScroll();
     preloader();
@@ -602,6 +601,10 @@ const init = () => {
 
     document.addEventListener('mouseover', () => {
         preViewImage('.ava-img-label', '.ava-img', '.ava-input-file');
+    })
+
+    document.addEventListener('click', () => {
+        telMask('.tel');
     })
 
     document.addEventListener('click', () => {
