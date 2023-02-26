@@ -52,14 +52,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'surname' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
-            'patronymic' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string',  'min:2', 'max:255'],
+            'name' => ['required', 'string',  'min:2', 'max:255'],
+            'patronymic' => ['required', 'string',  'min:2', 'max:255'],
             'birthday_date' => ['required', 'date', 'max:255'],
             'tel' => ['required', 'string', 'min:17', 'max:17', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password_confirmation' => ['required', 'string'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+        ], [
+            'min' => 'Минимум символов: :min.',
+            'confirmed' => 'Пароли не совпадают.',
+            'accepted' => 'Согласитесь с нашими условиями.'
         ]);
     }
 

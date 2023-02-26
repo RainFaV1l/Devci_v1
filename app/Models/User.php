@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -65,4 +66,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // Связь пользователя с ролью
+    public function role() {
+        return $this->belongsTo(UserRole::class);
+    }
+
+    // Вывод информации
+    static function getInfo($id) {
+        return User::select('surname', 'name', 'patronymic', 'email', 'birthday_date', 'tel', 'profile_photo_path')->find($id);
+    }
+
+    // Вывод ФИО
+    static function getFIO() {
+        $surname = Auth::user()->surname;
+        $name = Auth::user()->name;
+//        $patronymic = Auth::user()->patronymic;
+//        '.' . mb_substr($patronymic, 0, 1, 'UTF-8') .
+//        . ' ' . mb_substr($surname, 0, 1, 'UTF-8') . '.'
+        return mb_strimwidth($name, 0, 10, '...') ;
+    }
+
 }

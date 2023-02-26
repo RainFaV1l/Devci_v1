@@ -25,14 +25,14 @@
 
 // Mixin button является универсальным видом кнопки с разными стилями
 @mixin button($padding-t-b, $padding-l-r, $type) {
-    
+
     @include transition();
     @include flex-center();
 
     font-weight: 500;
 
     @if $type == 'gradient' {
-        
+
         color: #fff;
         background: linear-gradient(135deg, #F8A4D8 0%, #6C63FF 100%);
 
@@ -65,7 +65,7 @@
         }
 
     }
-    
+
     border-radius: 30px;
     padding: $padding-t-b $padding-l-r;
 }

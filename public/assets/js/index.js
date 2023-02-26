@@ -6,7 +6,9 @@ const burger = () => {
     const parent = document.querySelector('.modal-burger');
     if (!parent) return false;
     const content = parent.querySelector('.content');
+    if (!content) return false;
     const buttonClose = parent.querySelector('.close');
+    if (!buttonClose) return false;
 
     const bg = document.querySelector('.bg-black')
 
@@ -67,17 +69,21 @@ const programCourse = () => {
 }
 
 const navAccount = () => {
-    const parent = document.querySelector('.account-wrapper');
+
+    const parent = document.querySelector('.account');
     if(!parent) return false;
 
     const menu = parent.querySelector('.menu');
     const button = parent.querySelector('.name');
+    const accountWrapper = parent.querySelector('.account-wrapper');
     const arrow = parent.querySelector('.arrow');
 
-    button.addEventListener('click', () => {
+    accountWrapper.addEventListener('click', () => {
+        button.style.cssText=`user-select: none;`;
         menu.classList.toggle('active');
         arrow.classList.toggle('active');
     })
+
 }
 
 const accordion = (accordion, parentItems, parentButton, parrentContent) => {
@@ -426,23 +432,52 @@ const telMask = (telClass) => {
 
 const elAnim = () => {
 
-    const onEntry = (entry) => {
-        entry.forEach(change => {
-            if (change.isIntersecting) {
-                change.target.classList.add('element-show');
-            } else {
-                //change.target.classList.remove('element-show');
-            }
-        });
+    // Изначально убираем opacity для работы с turbolinks
+
+    // Отслеживаем перезагрузку сайта
+    if (window.performance) {
+
+        // Создаем функцию для автоматизации поиска классов
+        const getList = (item) => {
+
+            // Возвращаем анимацию
+            let headersAnimation = document.querySelectorAll(item);
+
+            headersAnimation.forEach((headerAnimation) => {
+
+                headerAnimation.classList.add('none');
+
+                // Добавление класса
+                const onEntry = (entry) => {
+                    entry.forEach(change => {
+                        if (change.isIntersecting) {
+                            change.target.classList.add('element-show');
+                        } else {
+                            // change.target.classList.remove('element-show');
+                        }
+                    });
+                }
+
+                // Создание класса для отслкживания изменений
+                let options = { threshold: [0.5] };
+                let observer = new IntersectionObserver(onEntry, options);
+                let elements = document.querySelectorAll('.element-animation');
+
+                // Отслкживание изменений
+                elements.forEach(elm => {
+                    observer.observe(elm);
+                });
+
+            })
+        }
+
+        getList('.header-animation');
+        getList('.text-animation');
+        getList('.opacity-anim');
+        getList('.opacity-items-anim');
+        getList('.img-anim');
+
     }
-
-    let options = { threshold: [0.5] };
-    let observer = new IntersectionObserver(onEntry, options);
-    let elements = document.querySelectorAll('.element-animation');
-
-    elements.forEach(elm => {
-        observer.observe(elm);
-    });
 
 }
 
@@ -536,10 +571,25 @@ const anchorSmoothScroll = ($anchor) => {
 
 }
 
+const preViewImage = (openItem, outputItem, fileItem) => {
+    let open = document.querySelector(openItem);
+    if(!open) return false;
+    open.addEventListener('click', () => {
+        let file = document.querySelector(fileItem);
+        file.addEventListener('change', (event) => {
+            let output = document.querySelector(outputItem);
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.addEventListener('load', () => {
+                URL.revokeObjectURL(output.src)
+            })
+        })
+    })
+}
+
 const init = () => {
+
     burger();
     programCourse();
-    navAccount();
     accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content', '.add-course-form-img__img');
     numberAnimation('.admin-panel-content-info-item__title');
     optionPlaceholder('.add-course-form__select');
@@ -549,6 +599,15 @@ const init = () => {
     smoothScroll();
     preloader();
     anchorSmoothScroll('a.anchor');
+
+    document.addEventListener('mouseover', () => {
+        preViewImage('.ava-img-label', '.ava-img', '.ava-input-file');
+    })
+
+    document.addEventListener('click', () => {
+        navAccount('.hover-open', '.ava-img');
+    })
+
 }
 
-document.addEventListener('DOMContentLoaded', init)
+document.addEventListener('DOMContentLoaded', init);

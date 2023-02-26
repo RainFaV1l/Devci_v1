@@ -1,4 +1,4 @@
-<footer class="footer opacity-anim element-animation">
+<footer class="footer element-animation opacity-anim">
     <div class="container">
         <div class="head">
             <div class="logo">

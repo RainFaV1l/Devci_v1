@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main;
+namespace App\Http\Livewire;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,12 +10,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $role = Auth::user()->role;
+        $this->authorize('view-admin-dashboard', [self::class]);
 
-        if($role == 3) {
-            return view('dashboard');
-        } else {
-            redirect('/');
-        }
+        return view('livewire.admin.dashboard');
+
+//        $role = Auth::user()->role_id;
+//
+//        if($role === 3) {
+//            return view('livewire.admin.dashboard');
+//        } else {
+//            abort(403);
+//        }
     }
 }

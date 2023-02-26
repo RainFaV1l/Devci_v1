@@ -15,4 +15,9 @@ class CourseCategory extends Model
     protected $table = 'course_categories';
     // Разрешение на запросы
     protected $guarded = false;
+
+    public function courses() {
+        return $this->hasMany(Course::class);
+    }
+
 }

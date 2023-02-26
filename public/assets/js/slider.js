@@ -25,7 +25,9 @@ const slider = () => {
 }
 
 const sliderInit = () => {
-    slider();
+    window.addEventListener('mousemove', () => {
+        slider();
+    })
 }
 
 document.addEventListener('DOMContentLoaded', sliderInit);

@@ -11,7 +11,12 @@
             <a href="{{ route('index.benefits') }}">Преимущества</a>
             <a href="{{ route('index.about') }}">О нас</a>
             <a href="{{ route('index.review') }}">Отзывы</a>
-            <a href="{{ route('login') }}" class="button-account__modal">Войти</a>
+            @auth
+                <a href="{{ route('logout') }}" class="button-account__modal">Выход</a>
+            @endauth
+            @guest
+                <a href="{{ route('login') }}" class="button-account__modal">Войти</a>
+            @endguest
         </div>
     </div>
 </div>
@@ -34,16 +39,44 @@
                 </a>
             </div>
             <div class="nav">
-                <a href="{{ route('index.index') }}" class="nav__a">Главная</a>
-                <a href="{{ route('catalog.index') }}" class="nav__a">Каталог</a>
-                <a href="{{ route('index.benefits') }}" class="nav__a">Преимущества</a>
-                <a href="{{ route('index.about') }}" class="nav__a">О нас</a>
-                <a href="{{ route('index.review') }}" class="nav__a">Отзывы</a>
+                <a href="{{ route('index.index') }}" class="nav__a {{ \App\Models\Header::isActiveRoute('index.index') }}">Главная</a>
+                <a href="{{ route('catalog.index') }}" class="nav__a {{ \App\Models\Header::isActiveRoute('catalog.index') }}">Каталог</a>
+                <a href="{{ route('index.benefits') }}" class="nav__a {{ \App\Models\Header::isActiveRoute('index.benefits') }}">Преимущества</a>
+                <a href="{{ route('index.about') }}" class="nav__a {{ \App\Models\Header::isActiveRoute('index.about') }}">О нас</a>
+                <a href="{{ route('index.review') }}" class="nav__a {{ \App\Models\Header::isActiveRoute('index.review') }}">Отзывы</a>
             </div>
-            <div class="account">
-                <a href="{{ route('login') }}" class="button-account">Войти</a>
-                <a href="#" class="burger"><img src="{{asset('assets/img/burger.png')}}" alt="Меню"></a>
-            </div>
+            @auth
+                <div class="account">
+                    <div class="account-wrapper">
+                        <div data-turbolinks-permanent class="name">
+                            <div class="arrow">
+                                <img src="assets/img/arrow.png" alt="">
+                            </div>
+                            <p>
+                                {{ \App\Models\User::getFIO() }}
+                            </p>
+                            <div class="ava">
+                                <img src="assets/avatar/user.png" alt="">
+                            </div>
+                        </div>
+                        <div class="menu">
+                            <a href="{{ route('index.index') }}" class="{{ \App\Models\Header::isActiveRoute('index.index') }}">Главная</a>
+                            <a href="{{ route('profile.index') }}" class="{{ \App\Models\Header::isActiveRoute('profile.index') }}">Профиль</a>
+                            <a href="#">Заявки</a>
+                            <a href="#">Сертификаты</a>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="exit">Выйти</button>
+                            </form>
+                        </div>
+                    </div>
+                    <a href="#" class="burger"><img src="assets/img/burger.png" alt=""></a>
+                </div>
+            @endauth
+            @guest
+                <a href="{{ route('login') }}" class="button-account">Вход</a>
+            @endguest
+{{--                <a href="#" class="burger"><img src="{{asset('assets/img/burger.png')}}" alt="Меню"></a>--}}
         </div>
     </div>
 </header>

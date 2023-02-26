@@ -32,4 +32,9 @@ class UserRole extends Model
     protected $casts = [
 
     ];
+
+    // Связь пользователя с пользователями
+    public function users() {
+        return $this->hasMany(User::class);
+    }
 }

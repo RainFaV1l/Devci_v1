@@ -23,28 +23,28 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-//        UserRole::factory()->create([
-//            'name' => 'Пользователь'
-//        ]);
-//
-//        UserRole::factory()->create([
-//            'name' => 'Учитель'
-//        ]);
-//
-//        UserRole::factory()->create([
-//            'name' => 'Администратор'
-//        ]);
+        UserRole::query()->create([
+            'name' => 'Пользователь'
+        ]);
 
-         \App\Models\User::factory()->create([
-             'name' => 'Admin',
-             'surname' => 'Admin',
-             'patronymic' => 'Admin',
-             'tel' => '000',
-             'role_id' => 3,
-             'birthday_date' => '2003.01.01',
-             'last_auth_date' => '2003.01.01',
-             'email' => 'admin@example.com',
-             'password' => Hash::make('adminadmin')
-         ]);
+        UserRole::query()->create([
+            'name' => 'Преподаватель'
+        ]);
+
+        UserRole::query()->create([
+            'name' => 'Администратор'
+        ]);
+
+//         \App\Models\User::factory()->create([
+//             'name' => 'Admin',
+//             'surname' => 'Admin',
+//             'patronymic' => 'Admin',
+//             'tel' => '000',
+//             'role_id' => 3,
+//             'birthday_date' => '2003.01.01',
+//             'last_auth_date' => '2003.01.01',
+//             'email' => 'admin@example.com',
+//             'password' => Hash::make('adminadmin')
+//         ]);
     }
 }

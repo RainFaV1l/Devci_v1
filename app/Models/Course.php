@@ -16,5 +16,12 @@ class Course extends Model
     // Разрешение на запросы
     protected $guarded = false;
 
+    public function user() {
+        return $this->belongsTo(User::class, 'author');
+    }
+
+    public function category() {
+        return $this->belongsTo(CourseCategory::class);
+    }
 
 }

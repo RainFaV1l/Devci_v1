@@ -1,8 +1,5 @@
 import './bootstrap';
 
-var Turbolinks = require("turbolinks")
-Turbolinks.start()
-
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
 window.Alpine = Alpine;
@@ -10,3 +7,5 @@ window.Alpine = Alpine;
 Alpine.plugin(focus);
 
 Alpine.start();
+
+Turbolinks.start();

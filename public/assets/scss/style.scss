@@ -18,6 +18,7 @@
 @import "gift.scss";
 @import "panel.scss";
 
+
 body {
     color: #1D1D39;
     box-sizing: border-box;
@@ -37,7 +38,7 @@ body {
 .main-section {
     padding: 0px 0px 50px 0px;
     //background: #fff !important;
-    overflow: hidden;
+    //overflow: hidden;
 }
 
 .main-section header {
@@ -93,7 +94,6 @@ body {
     .menu {
         position: absolute;
         background: white;
-        padding-bottom: 20px;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
         display: flex;
         flex-direction: column;
@@ -160,6 +160,14 @@ body {
 
     .nav__a:hover::after, .footer-nav__a:hover::after {
         width: 100%;
+    }
+
+    .nav__a.active:after {
+        width: 100%;
+    }
+
+    .nav__a.active {
+        color: $blue;
     }
 }
 
@@ -2098,6 +2106,16 @@ html, body {
     }
 }
 
+.account-wrapper .menu button {
+    width: 100%;
+    text-align: left;
+    @include transition();
+
+    &:hover {
+        background-color: #F3F2F8 !important;
+    }
+}
+
 @media (max-width: 1800px) {
     .admin-panel-info-new-users__header {
         gap: 30px;
@@ -2491,67 +2509,87 @@ textarea {
 // Анимации плавного появления
 
 .header-animation.element-animation {
-    transition: all .7s ease-in-out !important;
+    transition: all .7s ease-in-out;
+    opacity: 1;
+}
+
+.header-animation.element-animation.none {
     opacity: 0;
     transform: translateY(-20px);
 }
 
-.header-animation.element-animation.element-show {
-    opacity: 1;
+.header-animation.element-animation.none.element-show {
+    opacity: 1 !important;
     transform: translateY(0px);
 }
 
 .text-animation.element-animation {
     transition: all .7s ease-in-out !important;
+    opacity: 1;
+}
+
+.text-animation.element-animation.none {
     opacity: 0;
     transform: translateY(20px);
 }
 
-.text-animation.element-animation.element-show {
+.text-animation.element-animation.none.element-show {
     opacity: 1;
     transform: translateY(0px);
 }
 
 .opacity-anim.element-animation {
     transition: all .7s ease-in-out;
+    opacity: 1;
+}
+
+.opacity-anim.element-animation.none {
     opacity: 0;
 }
 
-.opacity-anim.element-animation.element-show  {
+.opacity-anim.element-animation.none.element-show  {
     opacity: 1;
 }
 
 .opacity-items-anim.element-animation {
     transition: all .7s ease-in-out !important;
+    opacity: 1;
+}
+
+.opacity-items-anim.element-animation.none {
     opacity: 0;
 }
 
-.opacity-items-anim.element-animation.element-show  {
+.opacity-items-anim.element-animation.none.element-show  {
     opacity: 1;
 }
 
-.opacity-items-anim:nth-of-type(2).element-show  {
-    opacity: 1;
-    transition-delay: .15s;
-}
-
-.opacity-items-anim:nth-of-type(3).element-show  {
+.opacity-items-anim:nth-of-type(2).none.element-show  {
     opacity: 1;
     transition-delay: .15s;
 }
 
-.opacity-items-anim:nth-of-type(4).element-show  {
+.opacity-items-anim:nth-of-type(3).none.element-show  {
+    opacity: 1;
+    transition-delay: .15s;
+}
+
+.opacity-items-anim:nth-of-type(4).none.element-show  {
     opacity: 1;
     transition-delay: .15s;
 }
 
 .img-anim.element-animation {
     transition: all .7s ease-in-out !important;
+    opacity: 1;
+}
+
+.img-anim.element-animation.none {
     opacity: 0;
     transform: rotate(-5deg);
 }
 
-.img-anim.element-animation.element-show {
+.img-anim.element-animation.none.element-show {
     opacity: 1;
     transform: rotate(0deg);
 }
@@ -2728,5 +2766,158 @@ body.active::-webkit-scrollbar {
 }
 
 .check-wrapper {
-    flex: 0 1 50%;
+    flex: 0 1 100%;
+}
+
+.auth__img, .auth__info {
+    //margin-top: 100px;
+}
+
+.input-column {
+    position: relative;
+}
+
+.input-column label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(29, 29, 57, 0.5);
+    transform-origin: left top;
+}
+
+input {
+    @include transition;
+    border: 1px solid transparent;
+}
+
+input:focus {
+    border-color: $blue;
+}
+
+.input-column {
+
+    &.error {
+
+        input:focus, input:not(:focus) {
+            border-color: $red;
+        }
+
+        input:focus + label {
+            padding: 0 5px;
+            top: -9px;
+            left: 20px;
+            transform: scale(.9);
+            background-color: #fff;
+            color: $red;
+        }
+
+    }
+
+    input + label {
+        @include transition;
+    }
+
+    input:focus + label {
+        padding: 0 5px;
+        top: -9px;
+        left: 20px;
+        transform: scale(.9);
+        background-color: #fff;
+        color: $blue;
+    }
+
+    input:not(:focus):valid + label {
+        padding: 0 5px;
+        top: -9px;
+        left: 20px;
+        transform: scale(.9);
+        background-color: #fff;
+    }
+
+}
+
+.error__input-column {
+    @include flex(c, null, null, 15px, null);
+}
+
+.input-column-error__text {
+    transform-origin: left;
+    font-size: 16px;
+    transform: scale(.9);
+    color: $red;
+}
+
+.reg-wrapper .error__input-column {
+    height: 91px;
+}
+
+input[type=date] + label {
+    padding: 0 5px;
+    top: -9px;
+    left: 20px;
+    transform: scale(.9);
+    background-color: #fff;
+}
+
+button {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.account-wrapper .menu button {
+    padding: 20px 40px;
+    font-size: 16px;
+}
+
+.profile .profile-wrapper.full-profile {
+    grid-template-columns: 1fr;
+}
+
+.profile .profile__user form button {
+    margin-top: 0;
+}
+
+.form__item-button {
+    width: 59%;
+}
+
+.profile .profile__user .profile__ava .ava {
+    width: 100px;
+    height: 100px;
+}
+
+.ava form label {
+    cursor: pointer;
+}
+
+.auth-form .items-center {
+    @include gap-row(10px);
+}
+
+.auth-form .items-center input[type=checkbox] {
+    cursor: pointer;
+}
+
+.profile__personal-email button {
+    height: 55px;
+ }
+
+input[type=date] {
+    cursor: pointer;
+}
+
+.ava form {
+    display: flex;
+}
+
+.profile-title__column {
+    @include gap-column(10px);
+}
+
+.profile-title__text.error {
+    color: $red;
 }

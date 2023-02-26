@@ -33,11 +33,16 @@ Route::group(['namespace' => 'App\Http\Livewire'], function () {
         Route::get('catalog/{id}', 'show')->name('index.show');
     });
 
-    Route::controller(UserController::class)->group(function () {
-        Route::get('profile', 'index')->name('profile.index');
+    Route::controller(UserController::class)->middleware(['auth'])->group(function () {
+        Route::get('/profile', 'index')->name('profile.index');
+        Route::post('/profile/changePersonalInfo', 'changePersonalInfo')->name('profile.changePersonalInfo');
+        Route::post('/profile/changeEmail', 'changeEmail')->name('profile.changeEmail');
+        Route::post('/profile/changeTel', 'changeTel')->name('profile.changeTel');
+        Route::post('/profile/changePassword', 'changePassword')->name('profile.changePassword');
+        Route::post('/profile/changeAvatar', 'changeAvatar')->name('profile.changeAvatar');
     });
 
-    Route::controller(DashboardController::class)->group(function () {
+    Route::controller(DashboardController::class)->middleware(['auth'])->group(function () {
         Route::get('dashboard', 'index')->name('dashboard.index');
     });
 
@@ -75,7 +80,7 @@ Route::group(['namespace' => 'App\Http\Livewire'], function () {
 });
 
 
-
+//dd(Route::getRoutes());
 
 
 Auth::routes();

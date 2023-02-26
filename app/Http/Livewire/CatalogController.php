@@ -9,6 +9,6 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        return view('main.catalog');
+        return view('livewire.catalog');
     }
 }
