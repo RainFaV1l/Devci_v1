@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,44 +20,27 @@
     @livewireStyles
     @livewireScripts
 
-{{--    <script  data-turbolinks-track="reload" src="{{mix(asset('resources/js/app.js'))}}"></script>--}}
-
     <script src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.2.5-jwYMmpCb8mVWq1WRn6YH/mode=imports,min/optimized/@hotwired/turbo.js" type="module">
         // import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
     </script>
 
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
 
-    {{--    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>--}}
 
     <script  data-turbolinks-track="reload" src="{{asset('assets/js/index.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
 </head>
 
-<body class="@yield('grey-bg')">
-
-    <!--Фон для меню-->
-    <div class="bg-black"></div>
-
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </div>
-
-    <div class="wrapper">
-        <div class="main-section @yield('gray-main-section')">
-            @include('components.header')
-            @yield('banner')
-        </div>
-
-        <main class="main">
-            @yield('content')
-        </main>
-
-        @include('components.footer')
-
-    </div>
-
+<body class="grey">
+<div class="bg-black"></div>
+    @include('components.admin-header')
+    <main>
+        @yield('content')
+    </main>
+    @include('components.admin-footer')
 </body>
+
 </html>

@@ -2,6 +2,7 @@
 
 
 use App\Http\Livewire\CatalogController;
+use App\Http\Livewire\CourseController;
 use App\Http\Livewire\IndexController;
 use App\Http\Livewire\UserController;
 use App\Http\Livewire\DashboardController;
@@ -29,24 +30,39 @@ Route::group(['namespace' => 'App\Http\Livewire'], function () {
     });
 
     Route::controller(CatalogController::class)->group(function () {
-        Route::get('catalog', 'index')->name('catalog.index');
-        Route::get('catalog/{id}', 'show')->name('index.show');
+        Route::get('/catalog', 'index')->name('catalog.index');
+        Route::get('/catalog/{id}', 'show')->name('index.show');
     });
 
     Route::controller(UserController::class)->middleware(['auth'])->group(function () {
-        Route::get('/profile', 'index')->name('profile.index');
-        Route::post('/profile/changePersonalInfo', 'changePersonalInfo')->name('profile.changePersonalInfo');
-        Route::post('/profile/changeEmail', 'changeEmail')->name('profile.changeEmail');
-        Route::post('/profile/changeTel', 'changeTel')->name('profile.changeTel');
-        Route::post('/profile/changePassword', 'changePassword')->name('profile.changePassword');
-        Route::post('/profile/changeAvatar', 'changeAvatar')->name('profile.changeAvatar');
+        Route::get('profile', 'index')->name('profile.index');
+        Route::post('profile/changePersonalInfo', 'changePersonalInfo')->name('profile.changePersonalInfo');
+        Route::post('profile/changeEmail', 'changeEmail')->name('profile.changeEmail');
+        Route::post('profile/changeTel', 'changeTel')->name('profile.changeTel');
+        Route::post('profile/changePassword', 'changePassword')->name('profile.changePassword');
+        Route::post('profile/changeAvatar', 'changeAvatar')->name('profile.changeAvatar');
     });
 
-    Route::controller(DashboardController::class)->middleware(['auth'])->group(function () {
-        Route::get('dashboard', 'index')->name('dashboard.index');
+    Route::controller(DashboardController::class)->middleware(['auth'])->prefix('dashboard')->group(function () {
+
+        Route::get('/show', 'index')->name('dashboard.index');
+        Route::get('/courses', 'courses')->name('dashboard.courses');
+        Route::get('/categories', 'categories')->name('dashboard.categories');
+        Route::get('/users', 'users')->name('dashboard.users');
+        Route::get('/groups', 'groups')->name('dashboard.groups');
+        Route::get('/applications', 'applications')->name('dashboard.applications');
+
+        Route::controller(CourseController::class)->middleware(['auth'])->prefix('courses')->group(function () {
+            Route::get('/add', 'add')->name('courses.add');
+            Route::post('/add', 'store')->name('courses.store');
+            Route::get('/category/add', 'categoryAddView')->name('courses.categoryAddView');
+            Route::post('/category/add', 'categoryAdd')->name('courses.categoryAdd');
+        });
     });
 
 });
+
+//Route::get('/courses/add/livewire', \App\Http\Livewire\Courses::class);
 
 
  Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {

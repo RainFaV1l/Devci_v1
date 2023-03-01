@@ -10,7 +10,7 @@ const burger = () => {
     const buttonClose = parent.querySelector('.close');
     if (!buttonClose) return false;
 
-    const bg = document.querySelector('.bg-black')
+    const bg = document.querySelector('.bg-black');
 
     if (!bg) return false;
 
@@ -23,7 +23,7 @@ const burger = () => {
                 content.classList.add('active')
             }, 0)
         });
-    })
+    });
 
 
     buttonClose.addEventListener('click', (e) => {
@@ -45,8 +45,8 @@ const burger = () => {
             }, 300)
             bg.classList.remove('active');
         }
-    })
-}
+    });
+};
 
 const programCourse = () => {
     const parent = document.querySelectorAll('.program-themes__item');
@@ -151,7 +151,6 @@ const optionPlaceholder = (select) => {
 
             // Меняем цвет option при изменении значения option
             selectItem.style = 'color: #1D1D39 !important;';
-            console.log(selectItem);
 
         })
     })
@@ -587,17 +586,19 @@ const preViewImage = (openItem, outputItem, fileItem) => {
 }
 
 const init = () => {
-
     burger();
     programCourse();
     accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content', '.add-course-form-img__img');
-    numberAnimation('.admin-panel-content-info-item__title');
     optionPlaceholder('.add-course-form__select');
-    dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
     elAnim();
     smoothScroll();
     preloader();
     anchorSmoothScroll('a.anchor');
+    numberAnimation('.admin-panel-content-info-item__title');
+
+    document.addEventListener('mouseover', () => {
+        dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
+    })
 
     document.addEventListener('mouseover', () => {
         preViewImage('.ava-img-label', '.ava-img', '.ava-input-file');

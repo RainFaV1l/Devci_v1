@@ -138,12 +138,12 @@
                             <div class="title">
                                 Смена телефона
                             </div>
-                            <form method="post" action="{{ route('profile.changeTel', $user) }}">
+                            <form method="post" action="{{ route('profile.changeTel', $user) }}" wire:submit.prevent="updateTel">
                                 @csrf
                                 <div class="form__item">
                                     <div class="error__input-column">
                                         <div class="input-column @error('tel') error @enderror">
-                                            <input id="profile-tel" type="text" name="tel" class="input tel" value="{{ $user['tel'] }}" required autofocus autocomplete="tel">
+                                            <input wire:model.debounce.500="tel" id="profile-tel" type="text" name="tel" class="input tel" value="{{ $user['tel'] }}" required autofocus autocomplete="tel">
                                             <label for="profile-tel">Телефон</label>
                                         </div>
                                         @error('tel')
@@ -154,7 +154,7 @@
                                 <div class="form__item">
                                     <div class="error__input-column">
                                         <div class="input-column @error('password_tel') error @enderror">
-                                            <input class="input" id="profile-password_tel" type="password" name="password_tel" required autofocus>
+                                            <input wire:model.debounce.500="password" class="input" id="profile-password_tel" type="password" name="password_tel" required autofocus>
                                             <label for="profile-password_tel">Пароль</label>
                                         </div>
                                         @error('invalid_tel')

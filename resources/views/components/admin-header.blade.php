@@ -1,4 +1,3 @@
-<!--Мобильное меню-->
 <div class="modal-burger">
     <div class="content">
         <div class="modal-burger__title">
@@ -21,8 +20,8 @@
     </div>
 </div>
 
-<header class="opacity-anim element-animation">
-    <div class="container">
+<header class="header-white">
+    <div class="container admin-container">
         <div class="head">
             <div class="logo">
                 <a href="{{ route('index.index') }}">
@@ -67,9 +66,7 @@
                         <div class="menu">
                             <a href="{{ route('index.index') }}" class="{{ \App\Models\Header::isActiveRoute('index.index') }}">Главная</a>
                             <a href="{{ route('profile.index') }}" class="{{ \App\Models\Header::isActiveRoute('profile.index') }}">Профиль</a>
-                            @if(\Illuminate\Support\Facades\Auth::user()->role_id == 3)
-                                <a href="{{ route('dashboard.index') }}" class="{{ \App\Models\Header::isActiveRoute('dashboard.index') }}">Админ</a>
-                            @endif
+                            <a href="{{ route('dashboard.index') }}" class="{{ \App\Models\Header::isActiveRoute('dashboard.index') }}">Админ</a>
                             <a href="#">Заявки</a>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
@@ -80,10 +77,6 @@
                     <a href="#" class="burger"><img src="assets/img/burger.png" alt=""></a>
                 </div>
             @endauth
-            @guest
-                <a href="{{ route('login') }}" class="button-account">Вход</a>
-            @endguest
-{{--                <a href="#" class="burger"><img src="{{asset('assets/img/burger.png')}}" alt="Меню"></a>--}}
         </div>
     </div>
 </header>
