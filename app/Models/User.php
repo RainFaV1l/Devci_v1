@@ -19,7 +19,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-//    use SoftDeletes;
+    //    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -68,23 +68,43 @@ class User extends Authenticatable
     ];
 
     // Связь пользователя с ролью
-    public function role() {
-        return $this->belongsTo(UserRole::class);
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class, 'role_id', 'id');
     }
 
     // Вывод информации
-    static function getInfo($id) {
+    static function getInfo($id)
+    {
         return User::select('surname', 'name', 'patronymic', 'email', 'birthday_date', 'tel', 'profile_photo_path')->find($id);
     }
 
     // Вывод ФИО
-    static function getFIO() {
+    static function getFIO()
+    {
         $surname = Auth::user()->surname;
         $name = Auth::user()->name;
-//        $patronymic = Auth::user()->patronymic;
-//        '.' . mb_substr($patronymic, 0, 1, 'UTF-8') .
-//        . ' ' . mb_substr($surname, 0, 1, 'UTF-8') . '.'
-        return mb_strimwidth($name, 0, 10, '...') ;
+        $patronymic = Auth::user()->patronymic;
+        //        '.' . mb_substr($patronymic, 0, 1, 'UTF-8') .
+        //        . ' ' . mb_substr($surname, 0, 1, 'UTF-8') . '.'
+        return mb_strimwidth($name, 0, 10, '...') . ' ' . mb_strimwidth($surname, 0, 1) . '.' . mb_strimwidth($patronymic, 0, 1);
     }
 
+    // Вывод полного ФИО
+    static function getFioByValue($surname, $name, $patronymic)
+    {
+        return $surname . ' ' . $name . ' ' . $patronymic;
+    }
+
+    // Вывод сокращенного ФИО
+    static function getFioShort($surname, $name, $patronymic)
+    {
+        return $surname . ' ' . mb_strimwidth($name, 0, 1)  . '.' . mb_strimwidth($patronymic, 0, 1) . '.';
+    }
+
+    // Связь с группой
+    public function group()
+    {
+        return $this->hasMany(UserModule::class, 'student_id');
+    }
 }

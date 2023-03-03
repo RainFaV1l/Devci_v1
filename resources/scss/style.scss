@@ -2943,3 +2943,46 @@ input[type=date] {
     display: flex;
     justify-content: flex-end;
 }
+
+.admin-panel-content-aside__item {
+    @include transition;
+}
+
+.admin-panel-content-aside__item.active {
+    color: #6C63FE;
+    .admin-panel-content-aside__item-icon {
+        background-color: $blue;
+        border-color: transparent;
+        svg {
+            circle {
+                stroke: #FFFFFF;
+            }
+            path {
+                stroke: #FFFFFF;
+            }
+        }
+    }
+}
+
+.admin-control__buttons form {
+    cursor: pointer;
+
+    svg {
+        path {
+            @include transition;
+        }
+        &:hover {
+            path {
+                stroke: $dark;
+            }
+        }
+    }
+}
+
+.account-wrapper .menu.active {
+    width: 198px;
+}
+
+input[type=chekbox] {
+    cursor: pointer;
+}

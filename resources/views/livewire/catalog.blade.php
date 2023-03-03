@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('page-title') Каталог курсов @endsection
+@section('page-title')
+    Каталог курсов
+@endsection
 
 @section('content')
     <section class="catalog-banner element-animation opacity-anim">
@@ -20,7 +22,7 @@
                     </div>
                 </div>
                 <div class="catalog-banner__img">
-                    <img src="{{asset('assets/img/catalog-banner.png')}}" alt="Изображение баннера">
+                    <img src="{{ asset('assets/img/catalog-banner.png') }}" alt="Изображение баннера">
                 </div>
             </div>
         </div>
@@ -42,47 +44,49 @@
             <div class="directions-category">
                 <div class="directions-category__main">
                     <a href="" class="active">Все</a>
-                    <a href="">Программирования</a>
-                    <a href="">Верстка</a>
-                    <a href="">Дизайн</a>
+                    @foreach ($categories as $category)
+                        <a href="">{{ $category['name'] }}</a>
+                    @endforeach
                 </div>
                 <div class="directions-category__all-course">
                     Всего курсов: 9
                 </div>
             </div>
             <div class="directions-courses">
-                <div class="best-course__item">
-                    <div class="best-course__info">
-                        <div class="best-course__text">
-                            <div class="type">
-                                Профи
+                @foreach ($courses as $course)
+                    <div class="best-course__item">
+                        <div class="best-course__info">
+                            <div class="best-course__text">
+                                <div class="type">
+                                    Профи
+                                </div>
+                                <div class="name">
+                                    {{ $course['name'] }}
+                                </div>
+                                <div class="cat">
+                                    Входит в состав курса “Веб разработка”
+                                </div>
                             </div>
-                            <div class="name">
-                                Веб-дизайн
-                            </div>
-                            <div class="cat">
-                                Входит в состав курса “Веб разработка”
+                            <div class="best-course__img">
+                                <img src="{{ asset('assets/img/c3.png') }}" alt="Изображение курса">
                             </div>
                         </div>
-                        <div class="best-course__img">
-                            <img src="{{asset('assets/img/c3.png')}}" alt="Изображение курса">
+                        <div class="best-course__lessons">
+                            <div class="best-course__time">
+                                <div class="catalog-lesson">
+                                    12 уроков
+                                </div>
+                                <div class="time">
+                                    2 очных занятия
+                                </div>
+                            </div>
+                            <a href="#" class="arrow">
+                                Подробнее
+                                <img src="{{ asset('assets/img/arrow2.png') }}" alt="Стрелка подробнее">
+                            </a>
                         </div>
                     </div>
-                    <div class="best-course__lessons">
-                        <div class="best-course__time">
-                            <div class="catalog-lesson">
-                                12 уроков
-                            </div>
-                            <div class="time">
-                                2 очных занятия
-                            </div>
-                        </div>
-                        <a href="#" class="arrow">
-                            Подробнее
-                            <img src="{{asset('assets/img/arrow2.png')}}" alt="Стрелка подробнее">
-                        </a>
-                    </div>
-                </div>
+                @endforeach
                 <div class="best-course__item">
                     <div class="best-course__info">
                         <div class="best-course__text">

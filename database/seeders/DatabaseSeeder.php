@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\CourseCategory;
+use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -48,16 +49,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Этикет'
         ]);
 
-//         \App\Models\User::factory()->create([
-//             'name' => 'Admin',
-//             'surname' => 'Admin',
-//             'patronymic' => 'Admin',
-//             'tel' => '000',
-//             'role_id' => 3,
-//             'birthday_date' => '2003.01.01',
-//             'last_auth_date' => '2003.01.01',
-//             'email' => 'admin@example.com',
-//             'password' => Hash::make('adminadmin')
-//         ]);
+         User::factory()->create([
+             'name' => 'Админ',
+             'surname' => 'Админ',
+             'patronymic' => 'Админ',
+             'tel' => '+7 (000) 000 0000',
+             'role_id' => 3,
+             'birthday_date' => '2023-03-12',
+             'last_auth_date' => '2023-03-01',
+             'email' => 'admin@example.com',
+             'password' => Hash::make('adminadmin')
+         ]);
     }
 }

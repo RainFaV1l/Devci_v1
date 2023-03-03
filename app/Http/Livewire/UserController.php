@@ -21,37 +21,37 @@ class UserController extends Controller
         return view('livewire.profile.profile', compact('user'));
     }
 
-    public function changeAvatar(Request $request, User $user) {
+    public function changeAvatar(Request $request, User $user)
+    {
         $request['profile_photo_path'] = $request['avatar'];
         unset($request['avatar']);
 
-        $validator = Validator::make
-        ($request->all(), [
-            'profile_photo_path' => ['required', 'mimes:jpeg,png,jpg,svg','max:5120'],
+        $validator = Validator::make($request->all(), [
+            'profile_photo_path' => ['required', 'mimes:jpeg,png,jpg,svg', 'max:5120'],
         ], [
             'avatar.mimes' => 'Разрешенные форматы: jpeg,png,jpg,svg.',
             'avatar.max' => 'Максимальный размер 5 мб.',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withErrors($validator->errors())->withInput($request->all());
         }
 
         $validated = $validator->validated();
 
-        if($request->file('avatar')) {
+        if ($request->file('avatar')) {
             $path = $request->file('avatar')->store('avatars', 'public');
         }
 
-        $user::query()->where('id', '=', Auth::user()->id)->update([ 'profile_photo_path' => 'storage/' . $path]);
+        $user::query()->where('id', '=', Auth::user()->id)->update(['profile_photo_path' => 'storage/' . $path]);
 
         return redirect(route('profile.index'));
     }
 
-    public function changePersonalInfo(Request $request, User $user) {
+    public function changePersonalInfo(Request $request, User $user)
+    {
 
-        $validator = Validator::make
-        ($request->all(), [
+        $validator = Validator::make($request->all(), [
             'surname' => ['required', 'string',  'min:2', 'max:255'],
             'name' => ['required', 'string',  'min:2', 'max:255'],
             'patronymic' => ['required', 'string',  'min:2', 'max:255'],
@@ -62,7 +62,7 @@ class UserController extends Controller
             'accepted' => 'Согласитесь с нашими условиями.',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withErrors($validator->errors())->withInput($request->all());
         }
 
@@ -71,20 +71,19 @@ class UserController extends Controller
         $user::query()->where('id', '=', Auth::user()->id)->update($validated);
 
         return redirect(route('profile.index'));
-
     }
 
-    public function changeEmail(Request $request, User $user) {
+    public function changeEmail(Request $request, User $user)
+    {
 
-        $validator = Validator::make
-        ($request->all(), [
+        $validator = Validator::make($request->all(), [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required'],
         ], [
             'max' => 'Максимум символов: :max.',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withErrors($validator->errors())->withInput($request->all());
         }
 
@@ -94,7 +93,7 @@ class UserController extends Controller
 
         $user = User::query()->select('password')->find(Auth::id());
 
-        if(!Hash::check($request['password'], $user->password)) {
+        if (!Hash::check($request['password'], $user->password)) {
             return back()->withErrors(['invalid_email' => 'Неверный пароль.'])->withInput($request->all());
         }
 
@@ -103,15 +102,15 @@ class UserController extends Controller
         return redirect(route('profile.index'));
     }
 
-    public function changeTel(Request $request, User $user) {
-        $validator = Validator::make
-        ($request->all(), [
+    public function changeTel(Request $request, User $user)
+    {
+        $validator = Validator::make($request->all(), [
             'tel' => ['required', 'string', 'min:17', 'max:17', 'unique:users'],
         ], [
             'min' => 'Кол-во символов: :min.',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withErrors($validator->errors())->withInput($request->all());
         }
 
@@ -121,7 +120,7 @@ class UserController extends Controller
 
         $user = User::query()->select('password')->find(Auth::id());
 
-        if(!Hash::check($request['password_tel'], $user->password)) {
+        if (!Hash::check($request['password_tel'], $user->password)) {
             return back()->withErrors(['invalid_tel' => 'Неверный пароль.'])->withInput($request->all());
         }
 
@@ -130,16 +129,14 @@ class UserController extends Controller
         return redirect(route('profile.index'));
     }
 
-    public function changePassword(Request $request, User $user) {
-        $validator = Validator::make
-        ($request->all(), [
-
-        ], [
+    public function changePassword(Request $request, User $user)
+    {
+        $validator = Validator::make($request->all(), [], [
             'min' => 'Кол-во символов: :min.',
             'same' => 'Пароли не совпадают.',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withErrors($validator->errors())->withInput($request->all());
         }
 
@@ -155,7 +152,7 @@ class UserController extends Controller
 
         $user = User::query()->select('password')->find(Auth::id());
 
-        if(!Hash::check($request['password_old'], $user->password)) {
+        if (!Hash::check($request['password_old'], $user->password)) {
             return back()->withErrors(['invalid_password' => 'Неверный пароль.'])->withInput($request->all());
         }
 
@@ -163,5 +160,4 @@ class UserController extends Controller
 
         return redirect(route('profile.index'));
     }
-
 }
