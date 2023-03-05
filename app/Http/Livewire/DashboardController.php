@@ -15,16 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         $this->authorize('view-admin-dashboard', [self::class]);
-
         return view('livewire.admin.dashboard.dashboard');
-
-        //        $role = Auth::user()->role_id;
-        //
-        //        if($role === 3) {
-        //            return view('livewire.admin.dashboard');
-        //        } else {
-        //            abort(403);
-        //        }
     }
 
     public function courses()

@@ -11,16 +11,12 @@
     <section class="profile">
         <div class="container">
             <div class="profile-wrapper full-profile">
-                {{--                @include('components.profile-left') --}}
+                {{-- @include('components.profile-left') --}}
                 <div class="content">
                     <div class="profile__user">
                         <div class="profile__ava">
                             <!-- Profile Photo -->
                             <div class="ava">
-                                {{--                                @if ($user['path']) --}}
-                                {{--                                    <img src="{{ asset('assets/img/ava-change.png') }}" alt="avatar" class="ava-img"> --}}
-                                {{--                                @endif --}}
-
                                 <form class="ava" method="post" action="{{ route('profile.changeAvatar', $user) }}"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -58,194 +54,15 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="profile__personal-information">
-                            <form action="{{ route('profile.changePersonalInfo', $user) }}" method="post">
-                                @csrf
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('surname') error @enderror">
-                                            <input class="input" id="profile-surname" type="text" name="surname"
-                                                value="{{ $user['surname'] }}" required autofocus>
-                                            <label for="profile-surname">Фамилия</label>
-                                        </div>
-                                        @error('surname')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('name') error @enderror">
-                                            <input class="input" id="profile-name" type="text" name="name"
-                                                value="{{ $user['name'] }}" required autofocus>
-                                            <label for="profile-name">Имя</label>
-                                        </div>
-                                        @error('name')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('patronymic') error @enderror">
-                                            <input class="input" id="profile-patronymic" type="text" name="patronymic"
-                                                value="{{ $user['patronymic'] }}" required autofocus>
-                                            <label for="profile-patronymic">Отчество</label>
-                                        </div>
-                                        @error('patronymic')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('birthday_date') error @enderror">
-                                            <input class="input" id="profile-birthday" type="date" min="1950-01-01"
-                                                max="2023-01-01" name="birthday_date"
-                                                value="{{ date('Y-m-d', strtotime($user['birthday_date'])) }}" required
-                                                autofocus>
-                                            <label for="profile-birthday">Дата рождения</label>
-                                        </div>
-                                        @error('birthday_date')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item-button">
-                                    <button type="submit" class="button">Сохранить</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="profile__personal-password profile__personal-email">
-                            <div class="title">
-                                Смена email
-                            </div>
-                            <form method="post" action="{{ route('profile.changeEmail', $user) }}">
-                                @csrf
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('email') error @enderror">
-                                            <input class="input" id="profile-password" type="text" name="email"
-                                                value="{{ $user['email'] }}" required autofocus autocomplete="email">
-                                            <label for="profile-password">Email</label>
-                                        </div>
-                                        @error('email')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div
-                                            class="input-column @error('invalid') error @enderror @error('password') error @enderror">
-                                            <input class="input" id="profile-new-password" type="password"
-                                                name="password" required autofocus>
-                                            <label for="profile-new-password">Пароль</label>
-                                        </div>
-                                        @error('invalid_email')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                        @error('password')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item-button">
-                                    <button type="submit" class="button">Сохранить</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="profile__personal-password profile__personal-email profile__personal-tel">
-                            <div class="title">
-                                Смена телефона
-                            </div>
-                            <form method="post" action="{{ route('profile.changeTel', $user) }}"
-                                wire:submit.prevent="updateTel">
-                                @csrf
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('tel') error @enderror">
-                                            <input wire:model.debounce.500="tel" id="profile-tel" type="text"
-                                                name="tel" class="input tel" value="{{ $user['tel'] }}" required
-                                                autofocus autocomplete="tel">
-                                            <label for="profile-tel">Телефон</label>
-                                        </div>
-                                        @error('tel')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('password_tel') error @enderror">
-                                            <input wire:model.debounce.500="password" class="input"
-                                                id="profile-password_tel" type="password" name="password_tel" required
-                                                autofocus>
-                                            <label for="profile-password_tel">Пароль</label>
-                                        </div>
-                                        @error('invalid_tel')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                        @error('password_tel')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item-button">
-                                    <button type="submit" class="button">Сохранить</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="profile__personal-password profile__personal-password-pass">
-                            <div class="title">
-                                Смена пароля
-                            </div>
-                            <form method="post" action="{{ route('profile.changePassword', $user) }}">
-                                @csrf
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('password_old') error @enderror">
-                                            <input class="input" id="profile-password" type="password"
-                                                name="password_old" required autofocus>
-                                            <label for="profile-password">Пароль</label>
-                                        </div>
-                                        @error('password_old')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('password_new') error @enderror">
-                                            <input class="input" id="profile-new-password" type="password"
-                                                name="password_new" required autofocus>
-                                            <label for="profile-new-password">Новый пароль</label>
-                                        </div>
-                                        @error('password_new')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item">
-                                    <div class="error__input-column">
-                                        <div class="input-column @error('password_r') error @enderror">
-                                            <input class="input" id="profile-password_r" type="password"
-                                                name="password_r" required autofocus>
-                                            <label for="profile-password_r">Подтверждение пароля</label>
-                                        </div>
-                                        @error('invalid_password')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                        @error('password_r')
-                                            <div class="input-column-error__text"> {{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form__item-button">
-                                    <button type="submit" class="button">Сохранить</button>
-                                </div>
-                            </form>
-                        </div>
+
+                        {{-- @livewire('counter') --}}
+
+                        {{-- Подключение компонентов livewire --}}
+                        @livewire('profile.profile-info', ['user' => $user])
+                        @livewire('profile.profile-email', ['user' => $user])
+                        @livewire('profile.profile-tel', ['user' => $user])
+                        @livewire('profile.profile-password', ['user' => $user])
+
                         <div class="profile__personal-password profile__personal-password-pass">
                             <div class="title">
                                 Двухфакторная аутентификация

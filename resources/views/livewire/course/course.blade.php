@@ -1,0 +1,63 @@
+<section class="directions element-animation opacity-anim">
+    <div class="container">
+        <div class="directions-head">
+            <div class="title">
+                <h2>Направления</h2>
+                <div class="line">
+                </div>
+            </div>
+            <div class="directions-head_category">
+                <a href="#" class="active">Базовый</a>
+                <a href="#">Средний </a>
+                <a href="#">Профи</a>
+            </div>
+        </div>
+        <div class="directions-category">
+            <div class="directions-category__main">
+                <a href="" class="active">Все</a>
+                @foreach ($categories as $category)
+                    <a href="">{{ $category['name'] }}</a>
+                @endforeach
+            </div>
+            <div class="directions-category__all-course">
+                Всего курсов: 9
+            </div>
+        </div>
+        <div class="directions-courses">
+            @foreach ($courses as $course)
+                <div class="best-course__item">
+                    <div class="best-course__info">
+                        <div class="best-course__text">
+                            <div class="type">
+                                Профи
+                            </div>
+                            <div class="name">
+                                {{ $course['name'] }}
+                            </div>
+                            <div class="cat">
+                                Входит в состав курса “Веб разработка”
+                            </div>
+                        </div>
+                        <div class="best-course__img">
+                            <img src="{{ asset('assets/img/c3.png') }}" alt="Изображение курса">
+                        </div>
+                    </div>
+                    <div class="best-course__lessons">
+                        <div class="best-course__time">
+                            <div class="catalog-lesson">
+                                12 уроков
+                            </div>
+                            <div class="time">
+                                2 очных занятия
+                            </div>
+                        </div>
+                        <a href="#" class="arrow">
+                            Подробнее
+                            <img src="{{ asset('assets/img/arrow2.png') }}" alt="Стрелка подробнее">
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>

@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('page-title')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon/favicon.svg') }}" type="image/svg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <script data-turbolinks-track="reload" src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
@@ -16,11 +15,11 @@
     <script data-turbolinks-track="reload" src="{{ asset('assets/js/index.js') }}" defer></script>
     <script data-turbolinks-track="reload" src="{{ asset('assets/js/slider.js') }}" defer></script>
     <script data-turbolinks-track="reload" src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <link rel="stylesheet" href="{{ asset('assets/scss/style.scss') }}">
     {{--        @vite(['public/assets/scss/style.scss', 'public/assets/css/style.css'], 'assets/js/index.js') --}}
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/scss/style.scss'], 'resources/js/index.js')
-
     @livewireScripts
 
     {{--    <script  data-turbolinks-track="reload" src="{{mix(asset('resources/js/app.js'))}}"></script> --}}
@@ -34,7 +33,7 @@
 
     {{--    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
 
-    <script data-turbolinks-track="reload" src="{{ asset('assets/js/index.js') }}"></script>
+    {{-- <script data-turbolinks-track="reload" src="{{ asset('assets/js/index.js') }}"></script> --}}
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 
@@ -73,7 +72,6 @@
 
         @include('components.footer')
     </div>
-
 </body>
 
 </html>

@@ -2986,3 +2986,39 @@ input[type=date] {
 input[type=chekbox] {
     cursor: pointer;
 }
+
+.error-page {
+
+    &__container {
+        padding: 50px 20px;
+    }
+
+    &__column {
+        @include gap-column(50px);
+        align-items: center;
+    }
+
+    &__content {
+        @include gap-column(30px);
+        align-items: center;
+    }
+    
+    &__text {
+        @include gap-column(15px);
+        text-align: center;
+        align-items: center;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 130%;
+    }
+
+    &__subtitle {
+        font-weight: 500;
+        font-size: 18px;
+        width: 645px;
+    }
+
+}

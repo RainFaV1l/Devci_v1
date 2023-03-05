@@ -11,8 +11,6 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
-        $categories = CourseCategory::all();
-        return view('livewire.catalog', compact('courses', 'categories'));
+        return view('livewire.catalog');
     }
 }
