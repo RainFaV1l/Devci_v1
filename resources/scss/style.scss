@@ -39,7 +39,12 @@ body {
     padding: 0px 0px 50px 0px;
     //background: #fff !important;
     //overflow: hidden;
+
+    .padding-none {
+        padding: 0;
+    }
 }
+
 
 .main-section header {
     background-color: #FFFFFF;
@@ -590,6 +595,7 @@ body {
         justify-content: space-between;
 
         .best-course__text {
+            flex: 0 1 80% !important;
             display: flex;
             flex-direction: column;
             gap: 30px;
@@ -612,13 +618,9 @@ body {
         }
 
         .best-course__img {
-            width: 261px;
-            height: 198px;
-
             img {
-                width: 100%;
                 height: 100%;
-                object-fit: contain;
+                object-fit: cover;
             }
         }
     }
@@ -1876,7 +1878,7 @@ html, body {
 
 .new-users-table__name {
     min-width: 0px;
-    flex: 0 1 23%;
+    flex: 0 1 20%;
     text-align: left;
     display: flex;
     justify-content: flex-start;
@@ -1892,8 +1894,40 @@ html, body {
     }
 }
 
+.new-users-table__name.price {
+    flex: 0 1 10%;
+}
+
 .admin-panel-info-new-groups {
     flex: 0 1 48.8%;
+}
+
+.new-users-table__name.id {
+    flex: 0 1 5% !important;
+}
+
+.new-users-table__name.name {
+    flex: 0 1 25% !important;
+}
+
+.new-users-table__name.price {
+    flex: 0 1 8% !important;
+}
+
+.new-users-table__name.author {
+    flex: 0 1 12% !important;
+}
+
+.new-users-table__name.category {
+    flex: 0 1 12% !important;
+}
+
+.new-users-table__name.date {
+    flex: 0 1 15% !important;
+}
+
+.new-users-table__name.courses-buttons {
+    flex: 0 1 10% !important;
 }
 
 @media (max-width: 1800px)  {
@@ -2165,7 +2199,7 @@ html, body {
 }
 
 .admin-panel-info-users .new-users-table__id, .admin-panel-info-users .admin-control__buttons {
-    flex: 0 1 15%;
+    flex: 0 1 5%;
 }
 
 .admin-control__hide svg path {
@@ -2179,7 +2213,7 @@ html, body {
 }
 
 .users-table .new-users-table__email {
-    flex: 1 0 20%;
+    flex: 1 0 10%;
 }
 
 // Стили таблицы с новыми группами на странице groups
@@ -2383,6 +2417,7 @@ html, body {
 
 .add-course-form-img-content__name {
     @include gap-column(25px);
+    align-items: center;
 }
 
 .add-course-form-img-content-name__text {
@@ -3002,7 +3037,7 @@ input[type=chekbox] {
         @include gap-column(30px);
         align-items: center;
     }
-    
+
     &__text {
         @include gap-column(15px);
         text-align: center;
@@ -3021,4 +3056,31 @@ input[type=chekbox] {
         width: 645px;
     }
 
+}
+
+.direction-banner__title {
+    line-height: calc(78 / 64 * 100%);
+}
+
+.blueFill__button {
+    @include button(15px, 48px, blueFill)
+}
+
+.darkerBlueFill__button {
+    @include button(15px, 48px, darkerBlueFill)
+}
+
+.dragable-img-multi {
+    .add-course-form-img-content__files {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        .drag-img-styles {
+            height: 220px;
+            //width: 19%;
+            object-fit: contain;
+        }
+    }
 }

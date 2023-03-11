@@ -16,6 +16,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Course' => 'App\Policies\DashboardControllerPolicy',
+        'App\Models\Group' => 'App\Policies\DashboardControllerPolicy',
+        'App\Models\Lesson' => 'App\Policies\DashboardControllerPolicy',
+        'App\Models\CourseCategory' => 'App\Policies\DashboardControllerPolicy',
+        'App\Models\User' => 'App\Policies\DashboardControllerPolicy',
 
 //        DashboardController::class => DashboardControllerPolicy::class
     ];

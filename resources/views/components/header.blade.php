@@ -20,7 +20,6 @@
         </div>
     </div>
 </div>
-
 <header class="opacity-anim element-animation">
     <div class="container">
         <div class="head">
@@ -71,10 +70,12 @@
                                 <a href="{{ route('dashboard.index') }}" class="{{ \App\Models\Header::isActiveRoute('dashboard.index') }}">Админ</a>
                             @endif
                             <a href="#">Заявки</a>
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <button type="submit" class="exit">Выйти</button>
-                            </form>
+                            @auth
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="exit">Выйти</button>
+                                </form>
+                            @endauth
                         </div>
                     </div>
                     <a href="#" class="burger"><img src="assets/img/burger.png" alt=""></a>
@@ -83,7 +84,7 @@
             @guest
                 <a href="{{ route('login') }}" class="button-account">Вход</a>
             @endguest
-{{--                <a href="#" class="burger"><img src="{{asset('assets/img/burger.png')}}" alt="Меню"></a>--}}
+            {{--                <a href="#" class="burger"><img src="{{asset('assets/img/burger.png')}}" alt="Меню"></a>--}}
         </div>
     </div>
 </header>

@@ -156,15 +156,31 @@
     }
 
     .directions-courses{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(624px, 1fr));
+        //display: flex;
+        //flex-direction: row;
+        //align-items: center;
+        //flex-wrap: wrap;
         gap: 30px;
-        justify-content: center;
+        //justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+        .directions-courses {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
     }
 }
 
 .number_two{
     background: #F3F2F8;
+}
+
+.best-course__info, .best-course__img {
+    width: 100%;
+}
+
+.name-cat {
+    @include gap-column(15px);
 }

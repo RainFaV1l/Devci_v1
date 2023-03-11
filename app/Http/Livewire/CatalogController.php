@@ -13,4 +13,10 @@ class CatalogController extends Controller
     {
         return view('livewire.catalog');
     }
+
+    public function show($id)
+    {
+        $course = Course::find($id);
+        return view('livewire.course.one-course', compact('course'));
+    }
 }

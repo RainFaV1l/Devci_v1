@@ -24,10 +24,6 @@ const slider = () => {
     })
 }
 
-const sliderInit = () => {
-    window.addEventListener('mousemove', () => {
-        slider();
-    })
-}
-
-document.addEventListener('DOMContentLoaded', sliderInit);
+document.addEventListener("turbo:load", function() {
+    slider()
+})

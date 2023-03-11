@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -106,5 +107,11 @@ class User extends Authenticatable
     public function group()
     {
         return $this->hasMany(UserModule::class, 'student_id');
+    }
+
+    // Аватарка пользователя
+    public function getUserUrlAttribute()
+    {
+        return asset(Storage::url('app/' . $this->profile_photo_path));
     }
 }

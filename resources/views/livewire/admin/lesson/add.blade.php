@@ -1,7 +1,7 @@
 @extends('layouts.app-dashboard')
 
 @section('page-title')
-    Админ панель
+    Добавление урока
 @endsection
 
 @section('content')
@@ -10,75 +10,44 @@
             <div class="content">
                 <div class="title-two">
                     <div class="text">
-                        <h1>Добавление курса</h1>
-                        <p>Страница добавления курса</p>
+                        <h1>Добавление урока</h1>
+                        <p>Страница добавления урока</p>
                     </div>
                     <div class="line"></div>
                 </div>
                 <div class="add-course__form add-course-form">
 
-                    <form action="{{ route('courses.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('lessons.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        {{--                        <div class="error__input-column"> --}}
-                        {{--                            <div class="input-column @error('invalid') error @enderror @error('password') error @enderror"> --}}
-                        {{--                                <input type="text" name="count" class="add-course-form__input input" required autofocus> --}}
-                        {{--                                <label for="profile-new-password">Количество очных занятий</label> --}}
-                        {{--                            </div> --}}
-                        {{--                            @error('invalid_email') --}}
-                        {{--                            <div class="input-column-error__text"> {{ $message }}</div> --}}
-                        {{--                            @enderror --}}
-                        {{--                            @error('password') --}}
-                        {{--                            <div class="input-column-error__text"> {{ $message }}</div> --}}
-                        {{--                            @enderror --}}
-                        {{--                        </div> --}}
-                        <input wire:model="name" type="text" name="name" class="add-course-form__input"
+                        <select name="course_id" class="add-course-form__input add-course-form__select">
+                            <option value="0" selected disabled>Курс</option>
+                            {{--                            @foreach ($users as $user)--}}
+                            {{--                                <option value="{{ $user['id'] }}">{{ $user['name'] }}</option>--}}
+                            {{--                            @endforeach--}}
+                        </select>
+                        @error('course_id')
+                        {{ $message }}
+                        @enderror
+                        <input type="text" name="name" class="add-course-form__input"
                             placeholder="Название">
                         @error('name')
                             {{ $message }}
                         @enderror
-                        <input wire:model="price" type="text" name="price" class="add-course-form__input"
-                            placeholder="Цена">
-                        @error('price')
-                            {{ $message }}
-                        @enderror
-                        <select wire:model="author" name="author" class="add-course-form__input add-course-form__select">
-                            <option value="0" selected disabled>Автор</option>
-                            @foreach ($users as $user)
-                                <option value="{{ $user['id'] }}">{{ $user['name'] }}</option>
-                            @endforeach
-                        </select>
-                        @error('author')
-                            {{ $message }}
-                        @enderror
-                        <select wire:model="course_category_id" name="course_category_id"
-                            class="add-course-form__input add-course-form__select">
-                            <option value="0" selected disabled>Категория</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                            @endforeach
-                        </select>
-                        @error('course_category_id')
-                            {{ $message }}
-                        @enderror
-                        <select wire:model="course_level_id" name="course_level_id"
-                                class="add-course-form__input add-course-form__select">
-                            <option value="0" selected disabled>Сложность</option>
-                            @foreach ($levels as $level)
-                                <option value="{{ $level['id'] }}">{{ $level['name'] }}</option>
-                            @endforeach
-                        </select>
-                        @error('course_level_id')
-                            {{ $message }}
-                        @enderror
-                        <textarea wire:model="description" name="description" placeholder="Введите описание..."
-                            class="add-course-form__input add-course-form__textarea"></textarea>
+                        <textarea name="description" placeholder="Введите описание..."
+                                  class="add-course-form__input add-course-form__textarea"></textarea>
                         @error('description')
-                            {{ $message }}
+                        {{ $message }}
                         @enderror
-                        <div class="add-course-form__img add-course-form-img dragable-img">
-                            <input wire:model="course_icon_path" id="dragImg" type="file" name="course_icon_path"
+                        <textarea name="task" placeholder="Введите задание..."
+                                  class="add-course-form__input add-course-form__textarea"></textarea>
+                        @error('task')
+                        {{ $message }}
+                        @enderror
+                        <div class="add-course-form__img add-course-form-img dragable-img-multi">
+                            <input id="dragImg" type="file" name="file_path"
                                 multiple class="hidden add-course-form-img__img drag-img" draggable="true">
                             <label for="dragImg" class="add-course-form-img-content add-course-form-img-content__button">
+                                <div class="add-course-form-img-content__files"></div>
                                 <div class="add-course-form-img-content__name">
                                     <div class="add-course-form-img-content__svg">
                                         <svg width="60" height="50" viewBox="0 0 60 50" fill="none"
@@ -91,17 +60,18 @@
                                                 fill="#6C63FF" />
                                         </svg>
                                     </div>
-                                    <p class="add-course-form-img-content-name__text">Перетащите сюда изображение курса</p>
+                                    <p class="add-course-form-img-content-name__text">Перетащите сюда файлы</p>
                                 </div>
                             </label>
                             @error('course_icon_path')
                                 <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
-{{--                        <div class="add-course-form__img add-course-form-img dragable-img">--}}
-{{--                            <input wire:model="course_banner_path" id="dragImg2" type="file" name="course_banner_path"--}}
+{{--                        <div class="add-course-form__img add-course-form-img dragable-img-multi-videos">--}}
+{{--                            <input id="dragImg2" type="file" name="video_path"--}}
 {{--                                multiple class="hidden add-course-form-img__img drag-img" draggable="true">--}}
 {{--                            <label for="dragImg2" class="add-course-form-img-content add-course-form-img-content__button">--}}
+{{--                                <div class="add-course-form-img-content__files"></div>--}}
 {{--                                <div class="add-course-form-img-content__name">--}}
 {{--                                    <div class="add-course-form-img-content__svg">--}}
 {{--                                        <svg width="60" height="50" viewBox="0 0 60 50" fill="none"--}}
@@ -114,13 +84,17 @@
 {{--                                                fill="#6C63FF" />--}}
 {{--                                        </svg>--}}
 {{--                                    </div>--}}
-{{--                                    <p class="add-course-form-img-content-name__text">Перетащите сюда баннер курса</p>--}}
+{{--                                    <p class="add-course-form-img-content-name__text">Перетащите сюда видеозаписи</p>--}}
 {{--                                </div>--}}
 {{--                            </label>--}}
 {{--                            @error('course_banner_path')--}}
 {{--                                <span class="error">{{ $message }}</span>--}}
 {{--                            @enderror--}}
 {{--                        </div>--}}
+                        <input type="text" name="video_path" class="add-course-form__input" placeholder="Введите ссылку на видео">
+                        @error('video_path')
+                        {{ $message }}
+                        @enderror
                         <div class="add-course-column-button">
                             <button type="submit" class="button">Добавить</button>
                         </div>

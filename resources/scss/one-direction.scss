@@ -23,12 +23,12 @@
         align-items: center;
         justify-content: space-between;
         gap: 30px;
-        flex-wrap: wrap;
 
         .direction-banner__info {
             display: flex;
+            align-items: flex-start;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
             width: 578px;
 
             .direction-banner__title {
@@ -40,6 +40,10 @@
                 font-size: 18px;
                 font-weight: 400;
             }
+        }
+
+        .direction-title-text {
+            @include gap-column(15px);
         }
     }
 
@@ -64,8 +68,7 @@
 
     @media screen and (max-width:1280px) {
         .direction-banner__main{
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: column-reverse;
         }
 
         .direction-banner__info{
@@ -368,4 +371,8 @@
 
 .program .program-themes__item .about {
     top: 75px !important;
+}
+
+.proposal__title-text {
+    @include gap-column(15px);
 }

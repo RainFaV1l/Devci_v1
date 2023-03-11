@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lesson_modules', function (Blueprint $table) {
+        Schema::create('course_levels', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('lesson_number')->unique();
-            $table->foreignId('lesson_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('module_id')->constrained('group_modules', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('name');
             $table->timestamps();
-//            $table->softDeletes();
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesson_modules');
+        Schema::dropIfExists('course_levels');
     }
 };

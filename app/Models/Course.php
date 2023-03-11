@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Course extends Model
 {
@@ -18,11 +19,28 @@ class Course extends Model
 
     public function author()
     {
-        return $this->hasOne(User::class, 'id', 'author')->get()[0];
+        return $this->belongsTo(User::class, 'author', 'id')->get()[0];
     }
 
     public function category()
     {
-        return $this->hasOne(CourseCategory::class, 'id', 'course_category_id');
+        return $this->belongsTo(CourseCategory::class, 'course_category_id', 'id')->get()[0];
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(CourseLevel::class, 'course_level_id', 'id')->get()[0];
+    }
+
+    // icon_url
+    public function getIconUrlAttribute()
+    {
+        return asset(Storage::url('app/' . $this->course_icon_path));
+    }
+
+    // banner_url
+    public function getBannerUrlAttribute()
+    {
+        return asset(Storage::url('app/' . $this->course_banner_path));
     }
 }

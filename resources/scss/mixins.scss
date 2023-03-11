@@ -65,6 +65,32 @@
         }
 
     }
+    @else if $type == 'blueFill' {
+
+        color: #1D1D39;
+        background-color: transparent;
+        border: 1px solid #1D1D39;
+
+        &:hover {
+            background-color: #6C63FF;
+            border-color: transparent;
+            color: #fff;
+        }
+
+    }
+
+    @else if $type == 'darkerBlueFill' {
+        border: 1px solid transparent !important;
+        color: #fff;
+        background-color: $blue;
+
+        &:hover {
+            background-color: #4d43fd;
+            border-color: transparent;
+            color: #fff;
+        }
+
+    }
 
     border-radius: 30px;
     padding: $padding-t-b $padding-l-r;

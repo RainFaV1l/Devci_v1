@@ -473,7 +473,7 @@
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
+{{--                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">--}}
                             </div>
                             <div class="name">
                                 Альфис Мусин
@@ -493,7 +493,7 @@
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
+{{--                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">--}}
                             </div>
                             <div class="name">
                                 Альфис Мусин
@@ -513,7 +513,7 @@
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
+{{--                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">--}}
                             </div>
                             <div class="name">
                                 Альфис Мусин
@@ -533,7 +533,7 @@
                         </div>
                         <div class="user">
                             <div class="ava">
-                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">
+{{--                                <img src="{{asset('assets/avatar/user.png')}}" alt="Аватарка пользователя">--}}
                             </div>
                             <div class="name">
                                 Альфис Мусин

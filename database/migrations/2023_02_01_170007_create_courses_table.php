@@ -20,8 +20,9 @@ return new class extends Migration
             $table->unsignedFloat('price')->nullable();
             $table->foreignId('author')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('course_category_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('course_level_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('course_icon_path')->nullable();
-            $table->string('course_banner_path')->nullable();
+//            $table->string('course_banner_path')->nullable();
             $table->timestamps();
 //            $table->softDeletes();
 

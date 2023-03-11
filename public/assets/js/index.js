@@ -294,10 +294,7 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
         input.addEventListener("change", (event) => {
 
             // Получение файла выбранного пользователем и [0] означает то, что если пользователь выберет несколько файлов, то мы выберем только первый
-            // file = event.target.files[0];
-
             file = event.target.files[0];
-
             dropArea.classList.add("active");
 
             // Вызываем функция
@@ -335,7 +332,7 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
             event.preventDefault();
 
             // Получение файла выбора пользователя и [0] это означает, что если пользователь выберет несколько файлов, мы выберем только первый
-            file = event.dataTransfer.files[0];
+            file = event.dataTransfer.file[0];
 
             // Вызов функции
             showFile();
@@ -379,6 +376,158 @@ const dragAndDrop = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconI
                 dropArea.classList.remove('active');
                 dragText.textContent = "Неверный формат файла!";
 
+            }
+        }
+    })
+
+}
+
+const dragAndDropMulti = (dragableImg, dragTextItem, buttonItem, inputItem, dragIconItem, contentInfoItem, contentFileItem, typeText) => {
+
+    // Выбор всех необходимых элементов
+    const dropArea = document.querySelectorAll(dragableImg);
+
+    dropArea.forEach((dropArea) => {
+        const dragText = dropArea.querySelector(dragTextItem);
+        const button = dropArea.querySelector(buttonItem);
+        const input = dropArea.querySelector(inputItem);
+        const dragIcon = dropArea.querySelector(dragIconItem);
+        const contentInfo = dropArea.querySelector(contentInfoItem);
+        const contentFile = dropArea.querySelector(contentFileItem)
+
+        // Это глобальная переменная, и мы будем использовать ее внутри нескольких функций
+        let files;
+
+        // Если пользователь нажмет на кнопку, тогда ввод также нажмет
+        button.addEventListener('click', () => {
+            input.click();
+        })
+
+
+        input.addEventListener("change", (event) => {
+
+            // Получение файла выбранного пользователем и [0] означает то, что если пользователь выберет несколько файлов, то мы выберем только первый
+            // file = event.target.files[0];
+
+            files = event.target.files;
+
+            dropArea.classList.add("active");
+
+            // Вызываем функция
+            showFile();
+
+        });
+
+        // Если пользователь перетаскивает файл поверх DropArea
+        dropArea.addEventListener("dragover", (event) => {
+
+            // Предотвращение поведения по умолчанию
+            event.preventDefault();
+
+            dropArea.classList.add("active");
+
+            dragText.textContent = "Отпустите, чтобы загрузить файл";
+
+        });
+
+        // Если пользователь выведет за область перетаскиваемый файл из DropArea
+
+        dropArea.addEventListener("dragleave", () => {
+
+            dropArea.classList.remove("active");
+
+            dragText.textContent = "Перетащите сюда баннер";
+
+        });
+
+        // Если пользователь сбросит файл на DropArea
+
+        dropArea.addEventListener("drop", (event) => {
+
+            // Предотвращение поведения по умолчанию
+            event.preventDefault();
+
+            // Получение файла выбора пользователя и [0] это означает, что если пользователь выберет несколько файлов, мы выберем только первый
+            files = event.dataTransfer.files;
+
+            // Вызов функции
+            showFile();
+
+        });
+
+        function showFile() {
+            if(files.length > 5) {
+                dragText.classList.add('active');
+                dragIcon.classList.add('active');
+                dropArea.classList.remove('active');
+                dragText.textContent = "Максимум 5 файлов!";
+            } else {
+                for (file of files) {
+                    // Получение выбранного типа файла
+                    let fileType = file.type;
+                    let validExtensions;
+
+                    if(typeText == 'files') {
+                        // Добавление некоторых допустимых расширений файлов в массив
+                        validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml',
+                            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                            'application/pdf',
+                            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                        ];
+                    } else if(typeText == 'videos') {
+                        // Добавление некоторых допустимых расширений файлов в массив
+                        validExtensions = ['video/ogg', 'video/mp4', 'video/webm'];
+                    }
+
+                    // Если выбранный пользователем файл является изображением
+                    if(validExtensions.includes(fileType)) {
+
+                        // создание нового объекта FileReader
+                        let fileReader = new FileReader();
+
+                        fileReader.addEventListener('load', () => {
+
+                            // передача исходного файла пользователя в переменную fileURL
+                            let fileURL = fileReader.result;
+
+                            let image = document.createElement("img");
+                            image.classList.add('drag-img-styles');
+                            if(fileType === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
+                                fileType === 'application/pdf' ||
+                                fileType === 'application/doc' ||
+                                fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                            {
+                                image.src = '../../assets/img/document.svg';
+                                image.alt = 'document';
+                            } else {
+                                image.src = fileURL;
+                                image.alt = 'image';
+                            }
+
+                            contentInfo.innerHTML = "";
+
+                            contentFile.appendChild(image);
+
+                            // создание тега img и передача выбранного пользователем источника файла внутри атрибута src
+                            // let imgTag = `<img class="drag-img-styles" src="${fileURL}" alt="image">`;
+
+                            // добавление этого созданного тега img внутри контейнера dropArea
+                            // contentInfo.innerHTML = imgTag;
+                            // dropArea.innerHTML = imgTag;
+
+                        });
+
+                        fileReader.readAsDataURL(file);
+
+                    } else {
+
+                        dragText.classList.add('active');
+                        dragIcon.classList.add('active');
+                        dropArea.classList.remove('active');
+                        dragText.textContent = "Неверный формат файла!";
+
+                    }
+                }
             }
         }
     })
@@ -585,33 +734,25 @@ const preViewImage = (openItem, outputItem, fileItem) => {
     })
 }
 
-const init = () => {
+document.addEventListener("turbo:load", function() {
+    navAccount('.hover-open', '.ava-img');
+    smoothScroll();
+    numberAnimation('.admin-panel-content-info-item__title');
+    telMask('.tel');
     burger();
     programCourse();
     accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content', '.add-course-form-img__img');
     optionPlaceholder('.add-course-form__select');
+    preViewImage('.ava-img-label', '.ava-img', '.ava-input-file');
+    dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
+    dragAndDropMulti('.dragable-img-multi', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name', '.add-course-form-img-content__files', 'files');
+    dragAndDropMulti('.dragable-img-multi-videos', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name', '.add-course-form-img-content__files', 'videos');
+})
+
+const init = () => {
     elAnim();
-    smoothScroll();
     preloader();
     anchorSmoothScroll('a.anchor');
-    numberAnimation('.admin-panel-content-info-item__title');
-
-    document.addEventListener('mouseover', () => {
-        dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
-    })
-
-    document.addEventListener('mouseover', () => {
-        preViewImage('.ava-img-label', '.ava-img', '.ava-input-file');
-    })
-
-    document.addEventListener('click', () => {
-        telMask('.tel');
-    })
-
-    document.addEventListener('click', () => {
-        navAccount('.hover-open', '.ava-img');
-    })
-
 }
 
-document.addEventListener('DOMContentLoaded', init);
+

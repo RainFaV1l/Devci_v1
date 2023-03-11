@@ -1,10 +1,19 @@
 .one-course{
     padding: 50px 0px 100px 0px;
     color: #1D1D39;
+    background: #F3F2F8;
+
+    .courses {
+        font-weight: 500;
+    }
+
+    .one-course-banner {
+        position: relative;
+    }
 
     .one-course__banner{
-        margin: 50px 0px;
-        padding-left: 50px;
+        padding: 100px 50px;
+        padding-top: 150px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -14,7 +23,31 @@
         border-radius: 12px;
     }
 
+    .one-course__banner-img {
+        flex: 0 1 50%;
+    }
+
+    .one-course__logo {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: calc(49 / 40 * 100%);
+        color: #fff;
+    }
+
+    .one-course__banner-img img {
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        top: 0;
+        right: 0;
+        object-fit: contain;
+    }
+
     .one-course__banner-info{
+        flex: 0 1 50%;
         display: flex;
         flex-direction: column;
         gap: 50px;
@@ -73,6 +106,7 @@
     }
 
     .one-course__nav{
+        margin-top: 50px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -105,7 +139,7 @@
     @media screen and (max-width:670px) {
         .one-course__name{
             h1{
-                font-size: 32px !important; 
+                font-size: 32px !important;
             }
 
             .text{

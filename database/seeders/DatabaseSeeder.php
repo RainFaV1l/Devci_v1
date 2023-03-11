@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\CourseCategory;
+use App\Models\CourseLevel;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Database\Seeder;
@@ -47,6 +48,18 @@ class DatabaseSeeder extends Seeder
 
         CourseCategory::query()->create([
             'name' => 'Этикет'
+        ]);
+
+        CourseLevel::query()->create([
+            'name' => 'Базовый'
+        ]);
+
+        CourseLevel::query()->create([
+            'name' => 'Средний'
+        ]);
+
+        CourseLevel::query()->create([
+            'name' => 'Сложный'
         ]);
 
          User::factory()->create([
