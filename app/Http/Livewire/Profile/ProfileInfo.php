@@ -26,6 +26,7 @@ class ProfileInfo extends Component
     {
         $validated = $this->validate($this->rules);
         User::query()->where('id', '=', Auth::user()->id)->update($validated);
+        $this->render();
     }
 
     public function render()

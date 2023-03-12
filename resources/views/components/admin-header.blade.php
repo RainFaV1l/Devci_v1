@@ -74,7 +74,7 @@
                             </form>
                         </div>
                     </div>
-                    <a href="#" class="burger"><img src="assets/img/burger.png" alt=""></a>
+                    <a href="#" class="burger"><img src="{{ asset('assets/img/burger.png') }}" alt="burger"></a>
                 </div>
             @endauth
         </div>

@@ -10,6 +10,9 @@
             <p class="new-users-table__name category">
                 {{ $course->category()['name'] }}
             </p>
+            <p class="new-users-table__name category">
+                {{ $course->level()['name'] }}
+            </p>
             <p class="new-users-table__name date">{{ $course['created_at'] }}</p>
             <p class="new-users-table__name date">{{ $course['updated_at'] }}</p>
             <p class="new-users-table__name admin-control__buttons courses-buttons">

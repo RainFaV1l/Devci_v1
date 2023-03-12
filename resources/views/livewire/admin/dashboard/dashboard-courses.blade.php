@@ -48,6 +48,7 @@
                                             <p class="new-users-table__name price">Цена</p>
                                             <p class="new-users-table__name author">Автор</p>
                                             <p class="new-users-table__name category">Категория</p>
+                                            <p class="new-users-table__name category">Сложность</p>
                                             <p class="new-users-table__name date">Дата создания</p>
                                             <p class="new-users-table__name date">Дата изменения</p>
                                             <p

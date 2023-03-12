@@ -4,7 +4,9 @@ namespace App\Http\Livewire\Course;
 
 use App\Models\Course as CourseAlias;
 use App\Models\CourseCategory;
+use App\Models\CourseLevel;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -61,6 +63,7 @@ class CourseUpdate extends Component
     {
         $this->users = User::all();
         $this->categories = CourseCategory::all();
+        $this->levels = CourseLevel::all();
         return view('livewire.admin.course.editForm', ['users' => $this->users, 'categories' => $this->categories, 'course' => $this->course, 'levels' => $this->levels]);
     }
 
@@ -72,6 +75,7 @@ class CourseUpdate extends Component
         $this->course_category_id = $this->course->course_category_id;
         $this->course_level_id = $this->course->course_level_id;
         $this->description = $this->course->description;
+
         //        $this->course_icon_path = $this->course->course_icon_path;
         //        $this->course_banner_path = $this->course->course_banner_path;
     }

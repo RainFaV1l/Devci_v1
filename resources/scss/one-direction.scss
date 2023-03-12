@@ -76,10 +76,10 @@
             text-align: center;
         }
     }
-    
+
     @media screen and (max-width:720px) {
         .direction-banner__img{
-            img{
+            img {
                 width: 100%;
             }
         }
@@ -147,7 +147,7 @@
     }
 
     @media screen and (max-width:111px) {
-        
+
     }
 }
 
@@ -212,7 +212,7 @@
         }
 
         @media screen and (max-width:400px) {
-            
+
         }
     }
 
@@ -323,7 +323,7 @@
 
         .about {
             font-size: 16px;
-            font-weight: 500;  
+            font-weight: 500;
             position: absolute;
             top: 0;
             opacity: 0;
@@ -375,4 +375,46 @@
 
 .proposal__title-text {
     @include gap-column(15px);
+}
+
+// Стили для блока подписки на курс
+
+.subscribe__row {
+
+    @include gap-row(20px);
+    align-items: center;
+
+    .subscribe__column {
+        flex: 0 1 55%;
+        @include gap-column(30px);
+        align-items: flex-start;
+    }
+
+    .subscribe__title-subtitle {
+        @include gap-column(15px);
+
+        .subscribe__title {
+            font-weight: 700;
+            font-size: 64px;
+            line-height: calc(78 / 64 * 100%);
+            color: #6C63FF;
+        }
+
+        .subscribe__text {
+            max-width: 554px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 130%;
+        }
+    }
+
+    .subscribe__button {
+        @include button(18px, 35px, darkerBlueFill);
+    }
+}
+
+.direction-banner__img {
+    img {
+        height: 405px;
+    }
 }

@@ -21,30 +21,30 @@
                         @csrf
                         <select name="course_id" class="add-course-form__input add-course-form__select">
                             <option value="0" selected disabled>Курс</option>
-                            {{--                            @foreach ($users as $user)--}}
-                            {{--                                <option value="{{ $user['id'] }}">{{ $user['name'] }}</option>--}}
-                            {{--                            @endforeach--}}
+                            @foreach ($courses as $course)
+                                <option value="{{ $course['id'] }}">{{ $course['name'] }}</option>
+                            @endforeach
                         </select>
                         @error('course_id')
                         {{ $message }}
                         @enderror
                         <input type="text" name="name" class="add-course-form__input"
-                            placeholder="Название">
+                            placeholder="Название" value="{{ old('name') }}">
                         @error('name')
                             {{ $message }}
                         @enderror
                         <textarea name="description" placeholder="Введите описание..."
-                                  class="add-course-form__input add-course-form__textarea"></textarea>
+                                  class="add-course-form__input add-course-form__textarea" value="{{ old('description') }}"></textarea>
                         @error('description')
                         {{ $message }}
                         @enderror
                         <textarea name="task" placeholder="Введите задание..."
-                                  class="add-course-form__input add-course-form__textarea"></textarea>
+                                  class="add-course-form__input add-course-form__textarea">{{ old('description') }}</textarea>
                         @error('task')
                         {{ $message }}
                         @enderror
                         <div class="add-course-form__img add-course-form-img dragable-img-multi">
-                            <input id="dragImg" type="file" name="file_path"
+                            <input id="dragImg" type="file" name="file_path[]"
                                 multiple class="hidden add-course-form-img__img drag-img" draggable="true">
                             <label for="dragImg" class="add-course-form-img-content add-course-form-img-content__button">
                                 <div class="add-course-form-img-content__files"></div>
@@ -63,7 +63,7 @@
                                     <p class="add-course-form-img-content-name__text">Перетащите сюда файлы</p>
                                 </div>
                             </label>
-                            @error('course_icon_path')
+                            @error('file_path')
                                 <span class="error">{{ $message }}</span>
                             @enderror
                         </div>
@@ -91,10 +91,15 @@
 {{--                                <span class="error">{{ $message }}</span>--}}
 {{--                            @enderror--}}
 {{--                        </div>--}}
-                        <input type="text" name="video_path" class="add-course-form__input" placeholder="Введите ссылку на видео">
-                        @error('video_path')
-                        {{ $message }}
-                        @enderror
+                        <div class="add-video-column video__inputs">
+                            @error('video_path')
+                                {{ $message }}
+                            @enderror
+                            <div class="video__input-column">
+                                <input type="text" name="inputs[0][video_path]" class="add-course-form__input" placeholder="Введите ссылку на видео">
+                                <button type="button" class="add-video-paths">Добавить</button>
+                            </div>
+                        </div>
                         <div class="add-course-column-button">
                             <button type="submit" class="button">Добавить</button>
                         </div>

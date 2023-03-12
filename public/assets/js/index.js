@@ -734,6 +734,54 @@ const preViewImage = (openItem, outputItem, fileItem) => {
     })
 }
 
+const inputAdd = (addColumn, addInput, addColumnChild) => {
+
+    const column = document.querySelector(addColumn);
+    const input = column.querySelector(addInput);
+    const addItemChildClass = column.querySelector(addColumnChild);
+
+    if(!column || !input || !addItemChildClass) return false;
+
+    let i = 0;
+
+    const add = (column, addColumnChild) => {
+
+        addColumnChild = addColumnChild.split('.').join('');
+
+        // Генерируем элемент
+        const element = document.createElement('div');
+        element.classList = addColumnChild;
+        element.innerHTML =
+            `
+                <input type="text" name="inputs[`+i+`][video_path]" class="add-course-form__input"
+                       placeholder="Введите ссылку на видео">
+                <button type="button" class="remove">Удалить</button>
+            `
+        ;
+        column.appendChild(element);
+    }
+
+    input.addEventListener('click', () => {
+        i++;
+        add(column, addColumnChild);
+    })
+
+    document.addEventListener('DOMNodeInserted', () => {
+        const items = column.querySelectorAll(addColumnChild);
+        for (let item of items) {
+            const removeInput = item.querySelector('.remove');
+            if(!removeInput) {
+                continue;
+            }
+            removeInput.addEventListener('click', () => {
+                item.remove();
+            })
+        }
+    })
+
+
+}
+
 document.addEventListener("turbo:load", function() {
     navAccount('.hover-open', '.ava-img');
     smoothScroll();
@@ -741,12 +789,13 @@ document.addEventListener("turbo:load", function() {
     telMask('.tel');
     burger();
     programCourse();
-    accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content', '.add-course-form-img__img');
+    // accordion('.accordion__list', '.accordion__item', '.accordion__button', '.accordion__content', '.add-course-form-img__img');
     optionPlaceholder('.add-course-form__select');
     preViewImage('.ava-img-label', '.ava-img', '.ava-input-file');
     dragAndDrop('.dragable-img', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name');
     dragAndDropMulti('.dragable-img-multi', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name', '.add-course-form-img-content__files', 'files');
     dragAndDropMulti('.dragable-img-multi-videos', '.add-course-form-img-content-name__text', '.drag-img', '.add-course-form-img__img', '.add-course-form-img-content__svg', '.add-course-form-img-content__name', '.add-course-form-img-content__files', 'videos');
+    inputAdd('.add-video-column', '.add-video-paths', '.video__input-column');
 })
 
 const init = () => {
@@ -755,4 +804,4 @@ const init = () => {
     anchorSmoothScroll('a.anchor');
 }
 
-
+document.addEventListener('DOMContentLoaded', init)

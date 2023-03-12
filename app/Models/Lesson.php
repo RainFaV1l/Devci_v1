@@ -15,4 +15,19 @@ class Lesson extends Model
     protected $table = 'lessons';
     // Разрешение на запросы
     protected $guarded = false;
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
+
+    public function lessonFiles()
+    {
+        return $this->belongsToMany(LessonFile::class, 'lesson_files_bundles', 'lesson_id', 'file_id');
+    }
+
+    public function lessonVideos()
+    {
+        return $this->belongsToMany(LessonVideo::class, 'lesson_videos_bundles', 'lesson_id', 'video_id');
+    }
 }

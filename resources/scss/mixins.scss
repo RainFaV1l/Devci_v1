@@ -92,6 +92,19 @@
 
     }
 
+    @else if $type == 'danger' {
+        border: 1px solid $red !important;
+        color: $red;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $red;
+            border-color: transparent;
+            color: #fff;
+        }
+
+    }
+
     border-radius: 30px;
     padding: $padding-t-b $padding-l-r;
 }

@@ -15,4 +15,9 @@ class LessonVideo extends Model
     protected $table = 'lesson_videos';
     // Разрешение на запросы
     protected $guarded = false;
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class, 'lesson_files_bundles', 'video_id', 'lesson_id');
+    }
 }

@@ -1,15 +1,15 @@
-<form method="post" wire:submit.prevent="update({{ $course['id'] }})" enctype="multipart/form-data">
-    <input wire:ignore wire:model="name" type="text" class="add-course-form__input"
+<form wire:submit.prevent="update({{ $course['id'] }})" enctype="multipart/form-data">
+    <input wire:ignore value="{{ $name }}" wire:model="name" type="text" class="add-course-form__input"
            placeholder="Название">
     @error('name')
     {{ $message }}
     @enderror
-    <input wire:ignore wire:model="price" type="text" class="add-course-form__input"
+    <input wire:ignore value="{{ $price }}" wire:model="price" type="text" class="add-course-form__input"
            placeholder="Цена">
     @error('price')
     {{ $message }}
     @enderror
-    <select  wire:ignore wire:model="author" class="add-course-form__input add-course-form__select">
+    <select  wire:ignore value="{{ $author }}" wire:model="author" class="add-course-form__input add-course-form__select">
         <option value="0" selected disabled>Автор</option>
         @foreach ($users as $user)
             <option
@@ -23,12 +23,12 @@
     @error('author')
     {{ $message }}
     @enderror
-    <select  wire:ignore wire:model="course_category_id"
+    <select value="{{ $course_category_id }}" wire:model="course_category_id"
              class="add-course-form__input add-course-form__select">
         <option value="0" selected disabled>Категория</option>
         @foreach ($categories as $category)
             <option
-                @if($category->id === $course->category_id)
+                @if($category->id === $course->course_category_id)
                     selected
                 @endif
                 value="{{ $category['id'] }}">{{ $category['name'] }}
@@ -38,13 +38,13 @@
     @error('course_category_id')
     {{ $message }}
     @enderror
-    <select  wire:ignore wire:model="course_level_id"
+    <select value="{{ $course_level_id }}" wire:model="course_level_id"
              class="add-course-form__input add-course-form__select">
         <option value="0" selected disabled>Сложность</option>
         @foreach ($levels as $level)
             <option
                 @if($level->id === $course->course_level_id)
-                selected
+                    selected
                 @endif
                 value="{{ $level['id'] }}">{{ $level['name'] }}
             </option>
@@ -54,7 +54,7 @@
     {{ $message }}
     @enderror
     <textarea  wire:ignore wire:model="description" placeholder="Введите описание..."
-               class="add-course-form__input add-course-form__textarea"></textarea>
+               class="add-course-form__input add-course-form__textarea">{{ $description }}</textarea>
     @error('description')
     {{ $message }}
     @enderror

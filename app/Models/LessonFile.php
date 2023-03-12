@@ -15,4 +15,9 @@ class LessonFile extends Model
     protected $table = 'lesson_files';
     // Разрешение на запросы
     protected $guarded = false;
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class, 'lesson_files_bundles', 'file_id', 'lesson_id');
+    }
 }

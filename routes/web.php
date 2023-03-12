@@ -83,6 +83,10 @@ Route::group(['namespace' => 'App\Http\Livewire'], function () {
             Route::post('/add', 'store')->name('lessons.store');
         });
     });
+
+    Route::controller(CourseController::class)->middleware(['auth'])->prefix('courses')->group(function () {
+        Route::get('/{id}/more', 'more')->name('courses.more');
+    });
 });
 
 Route::get('storage/{name}', function ($name) {

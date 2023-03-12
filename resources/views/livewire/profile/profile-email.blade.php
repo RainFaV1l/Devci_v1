@@ -8,7 +8,7 @@
             <div class="form__item">
                 <div class="error__input-column">
                     <div class="input-column @error('email') error @enderror @error('invalid_email') error @enderror">
-                        <input wire:ignore wire:model="email" class="input" id="profile-password_1" type="text" required
+                        <input wire:ignore value="{{ $email }}" wire:model="email" class="input" id="profile-password_1" type="text" required
                             autofocus autocomplete="email">
                         <label for="profile-password_1">Email</label>
                     </div>

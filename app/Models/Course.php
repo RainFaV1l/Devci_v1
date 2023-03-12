@@ -32,6 +32,11 @@ class Course extends Model
         return $this->belongsTo(CourseLevel::class, 'course_level_id', 'id')->get()[0];
     }
 
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
+    }
+
     // icon_url
     public function getIconUrlAttribute()
     {
