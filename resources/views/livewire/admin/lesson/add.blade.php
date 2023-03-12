@@ -33,6 +33,11 @@
                         @error('name')
                             {{ $message }}
                         @enderror
+                        <input type="text" name="lesson_number" class="add-course-form__input"
+                               placeholder="Номер урока" value="{{ old('lesson_number') }}">
+                        @error('lesson_number')
+                        {{ $message }}
+                        @enderror
                         <textarea name="description" placeholder="Введите описание..."
                                   class="add-course-form__input add-course-form__textarea" value="{{ old('description') }}"></textarea>
                         @error('description')

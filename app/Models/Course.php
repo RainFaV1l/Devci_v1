@@ -34,7 +34,7 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class, 'course_id', 'id');
+        return $this->hasMany(Lesson::class, 'course_id', 'id')->orderBy('lesson_number');
     }
 
     // icon_url

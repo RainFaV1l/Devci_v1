@@ -29,7 +29,8 @@ class LessonController extends Controller
             'course_id' => ['required', 'numeric'],
             'name' => ['required', 'string', 'max:250'],
             'description' => ['required', 'string', 'max:500'],
-            'task' => ['required', 'string', 'max:1000']
+            'task' => ['required', 'string', 'max:1000'],
+            'lesson_number' => ['required', 'numeric', 'unique:lessons']
         ]);
 
         if ($validator->fails()) {
